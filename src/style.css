@@ -1,7 +1,27 @@
-.grid-stack-item {
-  outline: auto;
+.grid-stack-item-removing {
+  opacity: 0.8;
+  filter: blur(5px);
+}
+.sidepanel-item {
+  background-color: #18bc9c;
+  text-align: center;
+  padding: 5px;
+  margin-bottom: 15px;
+}
+#trash {
+  background-color: rgba(255, 0, 0, 0.4);
+}
+ion-icon {
+  font-size: 300%;
 }
 
-.grid-stack {
-  outline: auto;
+body {
+  background: #282828;
+  font-family: sans-serif;
+}
+
+.grid-stack-item {
+  background: #a89984;
+  border: 2px solid hsla(0, 0%, 0%, 0.6);
+  border-radius: 10px;
 }

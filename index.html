@@ -1,13 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Ohj näyttö</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Advanced grid demo</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./src/demo.css" />
+
+    <script type="module" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons/ionicons.js"></script>
+
+    <!-- support for IE -->
+    <script src="node_modules/gridstack/dist/es5/gridstack-poly.js"></script>
+    <script src="node_modules/gridstack/dist/es5/gridstack-all.js"></script>
+
+    <style type="text/css">
+      .grid-stack-item-removing {
+        opacity: 0.8;
+        filter: blur(5px);
+      }
+      .sidepanel-item {
+        background-color: #18bc9c;
+        text-align: center;
+        padding: 5px;
+        margin-bottom: 15px;
+      }
+      #trash {
+        background-color: rgba(255, 0, 0, 0.4);
+      }
+      ion-icon {
+        font-size: 300%;
+      }
+    </style>
   </head>
+
   <body>
-    <div class="grid-stack"></div>
+    <h1>Advanced Demo</h1>
+    <div class="row">
+      <div class="sidepanel col-md-2 d-none d-md-block">
+        <div id="trash" class="sidepanel-item">
+          <ion-icon name="trash"></ion-icon>
+          <div>Drop here to remove!</div>
+        </div>
+        <div class="grid-stack-item sidepanel-item">
+          <ion-icon name="add-circle"></ion-icon>
+          <div>Drag me in the dashboard!</div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-10">
+        <div class="grid-stack"></div>
+      </div>
+    </div>
+
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
