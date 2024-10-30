@@ -1,5 +1,10 @@
 /* required file for gridstack to work */
 @import "../node_modules/gridstack/dist/gridstack.css";
+@import "widget/calc/calc2.css";
+
+body {
+  background-color: #212529;
+}
 
 /* Optional styles for demos */
 .btn-primary {
@@ -42,13 +47,13 @@ h1 {
 }
 
 .grid-stack {
-  background: #c9c9a7;
+  background: #343a40;
 }
 
 .sidebar > .grid-stack-item,
 .grid-stack-item-content {
   text-align: center;
-  background-color: #a89984;
+  background-color: #6c757d;
 }
 
 .grid-stack-item-removing {

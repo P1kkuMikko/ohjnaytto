@@ -1,5 +1,6 @@
 import "gridstack/dist/gridstack.css";
 import { GridStack } from "gridstack";
+import { widget } from "./widget/test.js";
 
 // NOTE: REAL apps would sanitize-html or DOMPurify before blinding setting innerHTML. see #2736
 GridStack.renderCB = function (el, w) {
@@ -27,6 +28,7 @@ let children = [
   { x: 4, y: 4, w: 4, h: 2, content: "9" },
   { x: 8, y: 4, w: 2, h: 2, content: "10" },
   { x: 10, y: 4, w: 2, h: 2, content: "11" },
+  { x: 4, y: 0, w: 4, h: 4, locked: true, content: widget.calc },
 ];
 let insert = [{ h: 2, content: "new item" }];
 
