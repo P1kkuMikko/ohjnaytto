@@ -1,14 +1,17 @@
 import "gridstack/dist/gridstack.css";
-import { GridStack } from "gridstack";
+import { GridStack, GridStackNode } from "gridstack";
 import { widget } from "./widget/test.js";
+import { Calculator } from "./widget/Widgets.js";
+
+const widgets = new Map();
 
 // NOTE: REAL apps would sanitize-html or DOMPurify before blinding setting innerHTML. see #2736
-GridStack.renderCB = function (el, w) {
+GridStack.renderCB = (el, w) => {
   el.innerHTML = w.content;
 };
+//## - Gridstack - ##
 
 let children = [
-  { x: 0, y: 0, w: 3, h: 8, locked: true, id: "calc", content: widget.calc },
   { x: 3, y: 0, w: 4, h: 2, content: "1" },
   { x: 3, y: 0, w: 4, h: 4, locked: true, content: 'I can\'t be moved or dragged, nor pushed by others!<br><ion-icon name="lock-closed-outline"></ion-icon>' },
   {
@@ -30,7 +33,10 @@ let children = [
   { x: 8, y: 4, w: 2, h: 2, content: "10" },
   { x: 10, y: 4, w: 2, h: 2, content: "11" },
 ];
-let insert = [{ h: 2, content: "new item" }];
+
+// let insert = [{ h: 2, content: "new item" }];
+
+let insert = [{ x: 0, y: 0, w: 3, h: 8, locked: true, id: "calc", content: widget.calc }];
 
 let grid = GridStack.init({
   float: true,
@@ -39,12 +45,36 @@ let grid = GridStack.init({
   removable: "#trash", // drag-out delete class
   children,
 });
+
 GridStack.setupDragIn(".sidepanel>.grid-stack-item", undefined, insert);
 
-grid.on("added removed change", function (e, items) {
-  let str = "";
-  items.forEach(function (item) {
-    str += " (x,y)=" + item.x + "," + item.y;
-  });
-  console.log(e.type + " " + items.length + " items:" + str);
+grid.on("added", (_: Event, item: GridStackNode[]) => {
+  const id = item[0].id;
+  console.log(id);
+  switch (true) {
+    case /calc/.test(id):
+      widgets.set(id, new Calculator(id)); // Initialize the calculator & add it to Map
+      console.log(widgets);
+      break;
+  }
 });
+
+grid.on("removed", (_: Event, item: GridStackNode[]) => {
+  const id = item[0].id;
+  switch (true) {
+    case /calc/.test(id):
+      widgets.get(id).destroy(); // Destroy Event Listeners
+      widgets.delete(id); // Delete from Map
+      console.log(widgets);
+      break;
+  }
+});
+
+// Debug logging
+// grid.on("added removed change", (event: Event, items: GridStackNode[]) => {
+//   let str = "";
+//   items.forEach((item) => {
+//     str += " (x,y)=" + item.x + "," + item.y;
+//   });
+//   console.log(event.type + " " + items.length + " items:" + str);
+// });
