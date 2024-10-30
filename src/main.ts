@@ -8,8 +8,9 @@ GridStack.renderCB = function (el, w) {
 };
 
 let children = [
-  { x: 0, y: 0, w: 4, h: 2, content: "1" },
-  { x: 4, y: 0, w: 4, h: 4, locked: true, content: 'I can\'t be moved or dragged, nor pushed by others!<br><ion-icon name="ios-lock"></ion-icon>' },
+  { x: 0, y: 0, w: 3, h: 8, locked: true, id: "calc", content: widget.calc },
+  { x: 3, y: 0, w: 4, h: 2, content: "1" },
+  { x: 3, y: 0, w: 4, h: 4, locked: true, content: 'I can\'t be moved or dragged, nor pushed by others!<br><ion-icon name="lock-closed-outline"></ion-icon>' },
   {
     x: 8,
     y: 0,
@@ -18,17 +19,16 @@ let children = [
     minW: 2,
     noResize: true,
     content:
-      '<p class="card-text text-center" style="margin-bottom: 0">Drag me!<p class="card-text text-center"style="margin-bottom: 0"><ion-icon name="hand"></ion-icon><p class="card-text text-center" style="margin-bottom: 0">...but don\'t resize me!',
+      '<p class="card-text text-center" style="margin-bottom: 0">Drag me!<p class="card-text text-center"style="margin-bottom: 0"><ion-icon name="hand-right-outline"></ion-icon><p class="card-text text-center" style="margin-bottom: 0">...but don\'t resize me!',
   },
   { x: 10, y: 0, w: 2, h: 2, content: "4" },
   { x: 0, y: 2, w: 2, h: 2, content: "5" },
   { x: 2, y: 2, w: 2, h: 4, content: "6" },
   { x: 8, y: 2, w: 4, h: 2, content: "7" },
   { x: 0, y: 4, w: 2, h: 2, content: "8" },
-  { x: 4, y: 4, w: 4, h: 2, content: "9" },
+  { x: 3, y: 4, w: 4, h: 2, content: "9" },
   { x: 8, y: 4, w: 2, h: 2, content: "10" },
   { x: 10, y: 4, w: 2, h: 2, content: "11" },
-  { x: 4, y: 0, w: 4, h: 4, locked: true, content: widget.calc },
 ];
 let insert = [{ h: 2, content: "new item" }];
 

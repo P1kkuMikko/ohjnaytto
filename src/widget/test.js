@@ -1,6 +1,5 @@
 export const widget = {
-  calc: `<div class="container">
-        <div class="calc-input">
+  calc: `<div class="calc-input">
             <p name="user-input" id="userinput">0</p>
         </div>
 
@@ -24,6 +23,5 @@ export const widget = {
             <button type="button" class="key-zero numbers">0</button>
             <button type="button" class="numbers">.</button>
             <button type="button" class="operations">=</button>
-        </div>
-    </div>`,
+        </div>`,
 };

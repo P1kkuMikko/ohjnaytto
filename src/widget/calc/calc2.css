@@ -63,7 +63,7 @@ button:focus {
 .key-zero {
   grid-column: span 2;
   width: 100%;
-  border-radius: 30%;
+  border-radius: 2em;
 }
 
 .operations {

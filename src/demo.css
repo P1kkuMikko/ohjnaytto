@@ -5,6 +5,12 @@
 body {
   background-color: #212529;
 }
+/* --- widgets by gridstack id --- */
+
+div[gs-id="calc"] > * {
+  padding: 25px;
+  border-radius: 10px;
+}
 
 /* Optional styles for demos */
 .btn-primary {
