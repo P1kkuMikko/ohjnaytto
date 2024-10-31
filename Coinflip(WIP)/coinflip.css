@@ -1,37 +1,21 @@
 body {
   padding-top: 50px;
-  background: #f7f7f7;
-  perspective: 1000px;
-}
-.container {
-  background: rgb(56, 7, 134);
-  padding: 25px;
-  width: 350px;
-  border-radius: 10px;
-}
-h1 {
-  text-align: center;
-  color: #f7f7f7;
-}
-#coin-container {
-  perspective: 1000px;
-}
-@keyframes spinHeads {
-  0% {
-    transform: rotateY(0);
-  }
-  100% {
-    transform: rotateY(1800deg);
-  }
+  background: #F7F7F7;
+  perspective: 800px;
 }
 
-@keyframes spinTails {
-  0% {
-    transform: rotateY(0);
-  }
-  100% {
-    transform: rotateY(1980deg);
-  }
+h1 {
+  text-align: center;
+}
+
+#container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 #coin {
@@ -41,31 +25,40 @@ h1 {
   height: 100px;
   cursor: pointer;
   transform-style: preserve-3d;
+  transition: transform 1s ease-in;
 }
 
 #coin div {
   width: 100%;
   height: 100%;
   border-radius: 50%;
-  box-shadow: inset 0 0 45px rgba(255, 255, 255, 0.3), 0 12px 20px -10px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 0 45px rgba(255, 255, 255, .3), 0 12px 20px -10px rgba(0, 0, 0, .4);
   position: absolute;
   backface-visibility: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  color: white;
+  font-weight: bold;
 }
 
 .side-a {
-  background-color: #51ff00;
+  background-color: #bb0000;
   z-index: 100;
 }
 
 .side-b {
-  background-color: #ff0000;
+  background-color: #3e3e3e;
   transform: rotateY(-180deg);
 }
 
-#coin.heads {
-  animation: spinHeads 3s cubic-bezier(0.5, 0, 1, 1) forwards;
+@keyframes flipHeads {
+  from { transform: rotateY(0); }
+  to { transform: rotateY(1800deg); }
 }
 
-#coin.tails {
-  animation: spinTails 3s cubic-bezier(0.5, 0, 1, 1) forwards;
+@keyframes flipTails {
+  from { transform: rotateY(0); }
+  to { transform: rotateY(1980deg); }
 }
