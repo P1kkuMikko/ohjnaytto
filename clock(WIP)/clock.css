@@ -1,11 +1,3 @@
-.clock-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 20px auto;
-  padding: 20px;
-}
-
 .clock {
   background: #ececec;
   width: 300px;
@@ -14,7 +6,7 @@
   border-radius: 50%;
   border: 14px solid #333;
   position: relative;
-  box-shadow: 0 2vw 4vw -1vw rgba(0, 0, 0, 0.8);
+  box-shadow: 0 2vw 4vw -1vw rgba(0,0,0,0.8);
 }
 
 .dot {
@@ -37,11 +29,13 @@
   z-index: 5;
   width: 4px;
   height: 65px;
-  background: #666;
+  background: #333;
   top: 79px;
   transform-origin: 50% 72px;
   left: 50%;
   margin-left: -2px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
 }
 
 .minute-hand {
@@ -49,7 +43,7 @@
   z-index: 6;
   width: 4px;
   height: 100px;
-  background: #333;
+  background: #666;
   top: 46px;
   left: 50%;
   margin-left: -2px;
@@ -65,7 +59,7 @@
   height: 120px;
   background: gold;
   top: 26px;
-  left: 50%;
+  lefT: 50%;
   margin-left: -1px;
   border-top-left-radius: 50%;
   border-top-right-radius: 50%;
@@ -77,7 +71,7 @@ span {
   position: absolute;
   color: #333;
   font-size: 22px;
-  font-family: "Poiret One";
+  font-family: 'Poiret One';
   font-weight: 700;
   z-index: 4;
 }
@@ -117,7 +111,7 @@ span {
   width: 4px;
   height: 25px;
   background: #666;
-  left: 50%;
+  left: 49.6%;
   margin-left: -1px;
   transform-origin: 50% 150px;
 }
@@ -143,8 +137,8 @@ span {
   left: 50%;
 }
 .date {
-  top: 80px;
-}
+    top: 80px;
+  }
 .day {
-  top: 200px;
+    top: 200px;
 }
