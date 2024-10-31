@@ -38,7 +38,14 @@
   word-break: break-all;
 }
 
-button {
+.calc-keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-row-gap: 15px;
+  grid-column-gap: 10px;
+}
+
+.calc-keys button {
   background: #333;
   color: #fff;
   font-size: 1.5rem;
@@ -53,20 +60,13 @@ button:focus {
   filter: brightness(120%);
 }
 
-.calc-keys {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-row-gap: 15px;
-  grid-column-gap: 10px;
-}
-
-.key-zero {
+.calc-keys > .key-zero {
   grid-column: span 2;
   width: 100%;
   border-radius: 2em;
 }
 
-.operations {
+.calc-keys > button.operations {
   background: #ff9501;
 }
 

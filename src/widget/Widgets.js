@@ -1,6 +1,7 @@
 export class Calculator {
-  constructor() {
-    this.inputValue = document.getElementById("userinput");
+  constructor(item) {
+    this.el = item.el;
+    this.inputValue = this.el.querySelector(".userinput");
     this.operationListeners = [];
     this.numberListeners = [];
     this.initialize();
@@ -12,7 +13,7 @@ export class Calculator {
   }
 
   addOperationListeners() {
-    document.querySelectorAll(".operations").forEach((item) => {
+    this.el.querySelectorAll(".operations").forEach((item) => {
       const listener = (e) => this.handleOperation(e);
       item.addEventListener("click", listener);
       this.operationListeners.push({ item, listener });
@@ -20,7 +21,7 @@ export class Calculator {
   }
 
   addNumberListeners() {
-    document.querySelectorAll(".numbers").forEach((item) => {
+    this.el.querySelectorAll(".numbers").forEach((item) => {
       const listener = (e) => this.handleNumber(e);
       item.addEventListener("click", listener);
       this.numberListeners.push({ item, listener });
@@ -77,6 +78,6 @@ export class Calculator {
 }
 
 // Initialize the calculator
-const calculator = new Calculator();
+// const calculator = new Calculator();
 
 // calculator.destroy();

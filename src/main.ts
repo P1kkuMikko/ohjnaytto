@@ -1,16 +1,9 @@
-import "gridstack/dist/gridstack.css";
 import { GridStack, GridStackNode } from "gridstack";
 import { widget } from "./widget/test.js";
 import { Calculator } from "./widget/Widgets.js";
 
-const widgets = new Map();
-
-// NOTE: REAL apps would sanitize-html or DOMPurify before blinding setting innerHTML. see #2736
-GridStack.renderCB = (el, w) => {
-  el.innerHTML = w.content;
-};
-//## - Gridstack - ##
-
+const widgets = new Map(); // For keeping track of dashboard widgets so event listeners can be removed
+let insert = [{ x: 0, y: 0, w: 3, h: 8, locked: true, id: "calc", content: widget.calc }];
 let children = [
   { x: 3, y: 0, w: 4, h: 2, content: "1" },
   { x: 3, y: 0, w: 4, h: 4, locked: true, content: 'I can\'t be moved or dragged, nor pushed by others!<br><ion-icon name="lock-closed-outline"></ion-icon>' },
@@ -32,11 +25,14 @@ let children = [
   { x: 3, y: 4, w: 4, h: 2, content: "9" },
   { x: 8, y: 4, w: 2, h: 2, content: "10" },
   { x: 10, y: 4, w: 2, h: 2, content: "11" },
-];
+]; // Hardcoded initial grid items
 
-// let insert = [{ h: 2, content: "new item" }];
+// ## Gridstack Setup
 
-let insert = [{ x: 0, y: 0, w: 3, h: 8, locked: true, id: "calc", content: widget.calc }];
+// NOTE: REAL apps would sanitize-html or DOMPurify before blinding setting innerHTML. see #2736
+GridStack.renderCB = (el, w) => {
+  el.innerHTML = w.content;
+};
 
 let grid = GridStack.init({
   float: true,
@@ -48,12 +44,13 @@ let grid = GridStack.init({
 
 GridStack.setupDragIn(".sidepanel>.grid-stack-item", undefined, insert);
 
-grid.on("added", (_: Event, item: GridStackNode[]) => {
-  const id = item[0].id;
-  console.log(id);
+//## - Gridstack Events - ##
+
+grid.on("added", (_: Event, items: GridStackNode[]) => {
+  const item = items[0];
   switch (true) {
-    case /calc/.test(id):
-      widgets.set(id, new Calculator(id)); // Initialize the calculator & add it to Map
+    case /calc/.test(item.id):
+      widgets.set(item.id, new Calculator(item)); // Initialize the calculator & add it to Map
       console.log(widgets);
       break;
   }
@@ -78,3 +75,11 @@ grid.on("removed", (_: Event, item: GridStackNode[]) => {
 //   });
 //   console.log(event.type + " " + items.length + " items:" + str);
 // });
+
+// document.querySelector(".grid-stack").addEventListener("click", onClick, { capture: true });
+
+// function onClick(event: Event) {
+//   const toParent = event.composedPath().indexOf(event.currentTarget);
+//   const widget = event.composedPath().splice(0, toParent);
+//   console.log(event.composedPath());
+// }

@@ -1,6 +1,6 @@
 export const widget = {
   calc: `<div class="calc-input">
-            <p name="user-input" id="userinput">0</p>
+            <p name="user-input" class="userinput">0</p>
         </div>
 
         <div class="calc-keys">
