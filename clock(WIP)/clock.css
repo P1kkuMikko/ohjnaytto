@@ -1,17 +1,17 @@
 .clock {
   background: #ececec;
-  width: 300px;
-  height: 300px;
+  width: 275px; /* Increased from 250px */
+  height: 275px; /* Increased from 250px */
   margin: 8% auto 0;
   border-radius: 50%;
-  border: 14px solid #333;
+  border: 13px solid #333; /* Increased from 12px */
   position: relative;
-  box-shadow: 0 2vw 4vw -1vw rgba(0,0,0,0.8);
+  box-shadow: 0 2vw 4vw -1vw rgba(0, 0, 0, 0.8);
 }
 
 .dot {
-  width: 14px;
-  height: 14px;
+  width: 13px; /* Increased from 12px */
+  height: 13px; /* Increased from 12px */
   border-radius: 50%;
   background: #ccc;
   top: 0;
@@ -27,13 +27,13 @@
 .hour-hand {
   position: absolute;
   z-index: 5;
-  width: 4px;
-  height: 65px;
+  width: 3.5px; /* Increased from 3px */
+  height: 60px; /* Increased from 55px */
   background: #333;
-  top: 79px;
-  transform-origin: 50% 72px;
+  top: 72px; /* Adjusted from 67px */
+  transform-origin: 50% 67px; /* Adjusted from 62px */
   left: 50%;
-  margin-left: -2px;
+  margin-left: -1.75px; /* Adjusted from -1.5px */
   border-top-left-radius: 50%;
   border-top-right-radius: 50%;
 }
@@ -41,104 +41,191 @@
 .minute-hand {
   position: absolute;
   z-index: 6;
-  width: 4px;
-  height: 100px;
+  width: 3.5px; /* Increased from 3px */
+  height: 90px; /* Increased from 85px */
   background: #666;
-  top: 46px;
+  top: 45px; /* Adjusted from 40px */
   left: 50%;
-  margin-left: -2px;
+  margin-left: -1.75px; /* Adjusted from -1.5px */
   border-top-left-radius: 50%;
   border-top-right-radius: 50%;
-  transform-origin: 50% 105px;
+  transform-origin: 50% 95px; /* Adjusted from 90px */
 }
 
 .second-hand {
   position: absolute;
   z-index: 7;
-  width: 2px;
-  height: 120px;
+  width: 2px; /* Increased from 1.5px */
+  height: 110px; /* Increased from 100px */
   background: gold;
-  top: 26px;
-  lefT: 50%;
-  margin-left: -1px;
+  top: 25px; /* Adjusted from 20px */
+  left: 50%;
+  margin-left: -1px; /* Adjusted from -0.75px */
   border-top-left-radius: 50%;
   border-top-right-radius: 50%;
-  transform-origin: 50% 125px;
+  transform-origin: 50% 115px; /* Adjusted from 105px */
 }
 
 span {
   display: inline-block;
   position: absolute;
   color: #333;
-  font-size: 22px;
+  font-size: 20px; /* Increased from 18px */
   font-family: 'Poiret One';
   font-weight: 700;
   z-index: 4;
 }
 
 .h12 {
-  top: 30px;
+  top: 27px; /* Adjusted from 25px */
   left: 50%;
-  margin-left: -9px;
+  margin-left: -8.5px; /* Adjusted from -7.5px */
 }
 .h3 {
-  top: 140px;
-  right: 30px;
+  top: 125px; /* Adjusted from 115px */
+  right: 27px; /* Adjusted from 25px */
 }
 .h6 {
-  bottom: 30px;
+  bottom: 27px; /* Adjusted from 25px */
   left: 50%;
-  margin-left: -5px;
+  margin-left: -4.5px; /* Adjusted from -4px */
 }
 .h9 {
-  left: 32px;
-  top: 140px;
+  left: 29px; /* Adjusted from 27px */
+  top: 125px; /* Adjusted from 115px */
 }
 
 .diallines {
   position: absolute;
   z-index: 2;
-  width: 2px;
-  height: 15px;
+  width: 1.75px; /* Increased from 1.5px */
+  height: 13px; /* Increased from 12px */
   background: #666;
   left: 50%;
-  margin-left: -1px;
-  transform-origin: 50% 150px;
+  margin-left: -0.875px; /* Adjusted from -0.75px */
+  transform-origin: 50% 135px; /* Adjusted from 125px */
 }
 .diallines:nth-of-type(5n) {
   position: absolute;
   z-index: 2;
-  width: 4px;
-  height: 25px;
+  width: 3.5px; /* Increased from 3px */
+  height: 22px; /* Increased from 20px */
   background: #666;
   left: 49.6%;
-  margin-left: -1px;
-  transform-origin: 50% 150px;
+  margin-left: -1.75px; /* Adjusted from -1px */
+  transform-origin: 50% 135px; /* Adjusted from 125px */
 }
 
 .info {
   position: absolute;
-  width: 120px;
-  height: 20px;
+  width: 110px; /* Increased from 100px */
+  height: 19px; /* Increased from 18px */
   border-radius: 7px;
   background: #ccc;
   text-align: center;
-  line-height: 20px;
+  line-height: 19px; /* Adjusted from 18px */
   color: #000;
-  font-size: 11px;
-  top: 200px;
+  font-size: 11px; /* Increased from 10px */
+  top: 180px; /* Adjusted from 170px */
   left: 50%;
-  margin-left: -60px;
-  font-family: "Poiret One";
+  margin-left: -55px; /* Adjusted from -50px */
+  font-family: 'Poiret One';
   font-weight: 700;
   z-index: 3;
   letter-spacing: 3px;
-  margin-left: -60px;
-  left: 50%;
 }
 .date {
-    top: 80px;
-  }
+  top: 75px; /* Adjusted from 70px */
+}
 .day {
-    top: 200px;
+  top: 180px; /* Adjusted from 170px */
+}
+/* Container for clock, timer, and alarm */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center vertically */
+    margin-top: 20px;
+}
+
+/* Sub-container for timer and alarm */
+.timer-alarm-container {
+    display: flex;
+    flex-direction: column;
+    margin-right: 20px; /* Add some space between the clock and the timer/alarm */
+}
+
+/* Clock container */
+.clock-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Timer and Alarm Styles */
+.timer, .alarm {
+    margin: 10px;
+    padding: 10px; /* Increased from 5px */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    text-align: center;
+    width: 300px; /* Increased from 250px */
+}
+
+.timer input, .alarm input {
+    margin: 5px; /* Increased from 3px */
+    padding: 5px; /* Increased from 3px */
+    width: 60px; /* Increased from 50px */
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.timer button, .alarm button {
+    margin: 5px; /* Increased from 3px */
+    padding: 5px 10px; /* Increased from 3px 8px */
+    border: none;
+    border-radius: 3px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-size: 1em; /* Increased from 0.9em */
+}
+
+.timer button:hover, .alarm button:hover {
+    background-color: #0056b3;
+}
+
+#timer-display, #alarm-display {
+    margin-top: 10px; /* Increased from 5px */
+    font-size: 1.2em; /* Increased from 1em */
+    color: #333;
+}
+
+/* Clock Styles */
+.clock {
+    background: #ececec;
+    width: 275px; /* Increased from 250px */
+    height: 275px; /* Increased from 250px */
+    margin: 0 auto; /* Center horizontally */
+    border-radius: 50%;
+    border: 13px solid #333; /* Increased from 12px */
+    position: relative;
+    box-shadow: 0 2vw 4vw -1vw rgba(0, 0, 0, 0.8);
+}
+/* Highlight active timer and alarm */
+#timer-display.active, #alarm-display.active {
+    background-color: #ffeb3b; /* Yellow background */
+    color: #333;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    animation: blink 1s step-start 3;
+}
+
+/* Blink animation */
+@keyframes blink {
+    50% {
+        opacity: 0;
+    }
 }

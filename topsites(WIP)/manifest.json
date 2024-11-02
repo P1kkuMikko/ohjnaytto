@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Top Sites Widget",
+  "version": "1.0",
+  "description": "Displays the user's top 5 most visited sites.",
+  "permissions": ["topSites"],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "image.png",
+      "48": "image.png",
+      "128": "image.png"
+    }
+  }
+}
