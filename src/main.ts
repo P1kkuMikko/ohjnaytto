@@ -1,9 +1,8 @@
 import { GridStack, GridStackNode } from "gridstack";
-import { widget } from "./widget/test.js";
-import { Calculator } from "./widget/Widgets.js";
+import { widgetElements } from "./widget/test.js";
+import { logicCalc } from "./widget/Widgets.js";
 
-const widgets = new Map(); // For keeping track of dashboard widgets so event listeners can be removed
-let insert = [{ x: 0, y: 0, w: 3, h: 8, locked: true, id: "calc", content: widget.calc }];
+let insert = [{ x: 0, y: 0, w: 3, h: 8, locked: true, id: "calc", content: widgetElements.calc }];
 let children = [
   { x: 3, y: 0, w: 4, h: 2, content: "1" },
   { x: 3, y: 0, w: 4, h: 4, locked: true, content: 'I can\'t be moved or dragged, nor pushed by others!<br><ion-icon name="lock-closed-outline"></ion-icon>' },
@@ -46,26 +45,48 @@ GridStack.setupDragIn(".sidepanel>.grid-stack-item", undefined, insert);
 
 //## - Gridstack Events - ##
 
-grid.on("added", (_: Event, items: GridStackNode[]) => {
-  const item = items[0];
-  switch (true) {
-    case /calc/.test(item.id):
-      widgets.set(item.id, new Calculator(item)); // Initialize the calculator & add it to Map
-      console.log(widgets);
-      break;
-  }
-});
+// grid.on("added", (_: Event, items: GridStackNode[]) => {
+//   const item = items[0];
+//   switch (true) {
+//     case /calc/.test(item.id):
+//       widgetMap.set(item.id, new Calculator(item)); // Initialize the calculator & add it to Map
+//       console.log(widgetMap);
+//       break;
+//   }
+// });
 
-grid.on("removed", (_: Event, item: GridStackNode[]) => {
-  const id = item[0].id;
+// grid.on("removed", (_: Event, item: GridStackNode[]) => {
+//   const id = item[0].id;
+//   switch (true) {
+//     case /calc/.test(id):
+//       widgetMap.get(id).destroy(); // Destroy Event Listeners
+//       widgetMap.delete(id); // Delete from Map
+//       console.log(widgetMap);
+//       break;
+//   }
+// });
+
+document.querySelector(".grid-stack").addEventListener("click", onClick, { capture: true });
+
+function onClick(event: Event) {
+  const gridItem = (event.target as HTMLElement).closest(".grid-stack-item");
+  if (!gridItem) return;
+
+  // console.group(event.type);
+  // console.log("event.target:", event.target);
+  // console.log("gridItem:", gridItem);
+  // console.groupEnd();
+
+  const id = gridItem.getAttribute("gs-id") || "";
+  if (!id) return;
+
+  // const widget = widgetMap.get(id);
+
   switch (true) {
     case /calc/.test(id):
-      widgets.get(id).destroy(); // Destroy Event Listeners
-      widgets.delete(id); // Delete from Map
-      console.log(widgets);
-      break;
+      logicCalc.handleEvent(event, gridItem);
   }
-});
+}
 
 // Debug logging
 // grid.on("added removed change", (event: Event, items: GridStackNode[]) => {
@@ -75,11 +96,3 @@ grid.on("removed", (_: Event, item: GridStackNode[]) => {
 //   });
 //   console.log(event.type + " " + items.length + " items:" + str);
 // });
-
-// document.querySelector(".grid-stack").addEventListener("click", onClick, { capture: true });
-
-// function onClick(event: Event) {
-//   const toParent = event.composedPath().indexOf(event.currentTarget);
-//   const widget = event.composedPath().splice(0, toParent);
-//   console.log(event.composedPath());
-// }

@@ -1,4 +1,4 @@
-export const widget = {
+export const widgetElements = {
   calc: `<div class="calc-input">
             <p name="user-input" class="userinput">0</p>
         </div>
