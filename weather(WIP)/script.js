@@ -1,4 +1,4 @@
-const apiKey = "c7e7ceecf42e9faedca7cbd0ff2ff94b";
+const apiKey = "";
 
 async function checkWeather(city) {
     const errorMessage = document.getElementById('error-message');
