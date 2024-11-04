@@ -18,9 +18,9 @@ export const logicCalc = {
         inputValue.innerText = "0";
         break;
       case "DEL":
-        this.inputValue.innerText = inputValue.innerText.slice(0, -1);
-        if (this.inputValue.innerText.length === 0) {
-          this.inputValue.innerText = "0";
+        inputValue.innerText = inputValue.innerText.slice(0, -1);
+        if (inputValue.innerText.length === 0) {
+          inputValue.innerText = "0";
         }
         break;
       case "%":

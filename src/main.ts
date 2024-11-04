@@ -1,9 +1,10 @@
 import { GridStack, GridStackNode } from "gridstack";
-import { widgetElements } from "./widget/test.js";
+import { widgetElements } from "./widget/elements.js";
 import { logicCalc } from "./widget/Widgets.js";
 
 let insert = [{ x: 0, y: 0, w: 3, h: 8, locked: true, id: "calc", content: widgetElements.calc }];
 let children = [
+  { x: 0, y: 0, w: 3, h: 8, locked: true, id: "calc", content: widgetElements.calc },
   { x: 3, y: 0, w: 4, h: 2, content: "1" },
   { x: 3, y: 0, w: 4, h: 4, locked: true, content: 'I can\'t be moved or dragged, nor pushed by others!<br><ion-icon name="lock-closed-outline"></ion-icon>' },
   {
