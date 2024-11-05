@@ -1,12 +1,18 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
-    background-color: #282c34;
-    color: #61dafb;
+    background: linear-gradient(135deg, #2c3e50, #4a90e2);
+    color: #e6f7ff;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    font-family: 'Arial', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 #clock-container {
@@ -14,7 +20,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-color: #20232a;
+    background-color: #2c3e50;
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
@@ -23,7 +29,7 @@ body {
 #clock {
     font-size: 64px;
     margin-bottom: 20px;
-    color: #61dafb;
+    color: #4a90e2;
 }
 
 #timezone-selector {
@@ -31,8 +37,8 @@ body {
     padding: 5px;
     border: none;
     border-radius: 5px;
-    background-color: rgba(97, 218, 251, 0.7);
-    color: #20232a;
+    background-color: rgba(74, 144, 226, 0.7);
+    color: #e6f7ff;
     cursor: pointer;
     outline: none;
     opacity: 0.8;
@@ -44,6 +50,6 @@ body {
 }
 
 #timezone-selector option {
-    background-color: #20232a;
-    color: #61dafb;
+    background-color: #2c3e50;
+    color: #4a90e2;
 }

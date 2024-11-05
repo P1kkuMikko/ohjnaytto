@@ -72,12 +72,9 @@ function setDefaultTimezone() {
     timezoneSelector.value = localTimezone;
 }
 
-// Populate the timezone selector and set the default timezone
 populateTimezoneSelector();
 setDefaultTimezone();
 
-// Update the clock every second
 setInterval(updateClock, 1000);
 
-// Initial call to display the clock immediately
 updateClock();

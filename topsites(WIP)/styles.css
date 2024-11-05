@@ -1,4 +1,3 @@
-/* Base styling for the extension popup */
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -8,21 +7,18 @@ body {
     min-width: 250px;
 }
 
-/* Container for the widget content */
 .widget-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-/* Header styling */
 h3 {
     font-size: 1.2em;
     margin-bottom: 10px;
     color: #333;
 }
 
-/* Styling for the list of top sites */
 .top-sites-list {
     list-style: none;
     padding: 0;
@@ -30,7 +26,6 @@ h3 {
     width: 100%;
 }
 
-/* List item styling */
 .top-sites-list li {
     display: flex;
     align-items: center;
@@ -42,13 +37,11 @@ h3 {
     transition: transform 0.1s ease, box-shadow 0.1s ease;
 }
 
-/* Hover effect for list items */
 .top-sites-list li:hover {
     transform: translateY(-2px);
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
 
-/* Favicon styling */
 .top-sites-list img {
     width: 16px;
     height: 16px;
@@ -56,7 +49,6 @@ h3 {
     margin-right: 10px;
 }
 
-/* Link styling */
 .top-sites-list a {
     color: #1a73e8;
     text-decoration: none;
@@ -67,7 +59,6 @@ h3 {
     max-width: 180px;
 }
 
-/* Hover effect for links */
 .top-sites-list a:hover {
     text-decoration: underline;
 }

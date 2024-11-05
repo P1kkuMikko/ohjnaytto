@@ -48,7 +48,7 @@ function getWeatherDescription(code) {
 async function searchWeather() {
     const cityInput = document.getElementById('cityInput').value;
     const weatherResult = document.getElementById('weatherResult');
-    weatherResult.innerHTML = '';  // Clear previous results
+    weatherResult.innerHTML = ''; 
 
     if (cityInput.trim() === '') {
         weatherResult.textContent = 'Syötä kaupungin nimi.';

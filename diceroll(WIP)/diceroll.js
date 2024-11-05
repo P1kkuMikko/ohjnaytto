@@ -1,40 +1,40 @@
-function createDice(number) {
-  const dotPositionMatrix = {
-    1: [
-      [50, 50]
-    ],
-    2: [
-      [20, 20],
-      [80, 80]
-    ],
-    3: [
-      [20, 20],
-      [50, 50],
-      [80, 80]
-    ],
-    4: [
-      [20, 20],
-      [20, 80],
-      [80, 20],
-      [80, 80]
-    ],
-    5: [
-      [20, 20],
-      [20, 80],
-      [50, 50],
-      [80, 20],
-      [80, 80]
-    ],
-    6: [
-      [20, 20],
-      [20, 80],
-      [50, 20],
-      [50, 80],
-      [80, 20],
-      [80, 80]
-    ]
-  };
+const dotPositionMatrix = {
+  1: [
+    [50, 50]
+  ],
+  2: [
+    [20, 20],
+    [80, 80]
+  ],
+  3: [
+    [20, 20],
+    [50, 50],
+    [80, 80]
+  ],
+  4: [
+    [20, 20],
+    [20, 80],
+    [80, 20],
+    [80, 80]
+  ],
+  5: [
+    [20, 20],
+    [20, 80],
+    [50, 50],
+    [80, 20],
+    [80, 80]
+  ],
+  6: [
+    [20, 20],
+    [20, 80],
+    [50, 20],
+    [50, 80],
+    [80, 20],
+    [80, 80]
+  ]
+};
 
+function createDice(number) {
   const dice = document.createElement("div");
   dice.classList.add("dice");
 
@@ -50,42 +50,6 @@ function createDice(number) {
 }
 
 function updateDice(dice, number) {
-  const dotPositionMatrix = {
-    1: [
-      [50, 50]
-    ],
-    2: [
-      [20, 20],
-      [80, 80]
-    ],
-    3: [
-      [20, 20],
-      [50, 50],
-      [80, 80]
-    ],
-    4: [
-      [20, 20],
-      [20, 80],
-      [80, 20],
-      [80, 80]
-    ],
-    5: [
-      [20, 20],
-      [20, 80],
-      [50, 50],
-      [80, 20],
-      [80, 80]
-    ],
-    6: [
-      [20, 20],
-      [20, 80],
-      [50, 20],
-      [50, 80],
-      [80, 20],
-      [80, 80]
-    ]
-  };
-
   dice.innerHTML = '';
   for (const dotPosition of dotPositionMatrix[number]) {
     const dot = document.createElement("div");
@@ -97,6 +61,13 @@ function updateDice(dice, number) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  const diceContainer = document.querySelector('.dice-container');
+
+  for (let i = 1; i <= 6; i++) {
+    const dice = createDice(i);
+    diceContainer.appendChild(dice);
+  }
+
   const rollButton = document.querySelector('.btn-roll-dice');
   rollButton.addEventListener('click', function () {
     const numberOfDiceInput = document.getElementById('number-of-dice');
@@ -108,11 +79,8 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    // Clear the dice container
-    const diceContainer = document.querySelector('.dice-container');
     diceContainer.innerHTML = '';
 
-    // Create initial dice elements
     const diceElements = [];
     for (let i = 0; i < numberOfDice; i++) {
       const dice = createDice(Math.floor(Math.random() * 6) + 1);
@@ -120,7 +88,6 @@ document.addEventListener('DOMContentLoaded', function () {
       diceElements.push(dice);
     }
 
-    // Animate the dice roll
     const interval = setInterval(() => {
       diceElements.forEach(dice => {
         updateDice(dice, Math.floor(Math.random() * 6) + 1);
