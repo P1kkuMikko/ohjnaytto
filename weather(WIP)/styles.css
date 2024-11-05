@@ -1,0 +1,59 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background: linear-gradient(135deg, #4a90e2, #d9e4f5); /* Changed background colors */
+}
+
+.app-container {
+    text-align: center;
+    background: linear-gradient(135deg, #00ff59, #0088ff); /* Changed to gradient background */
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 350px;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+    font-size: 28px; /* Increased font size */
+}
+
+input[type="text"] {
+    width: 80%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 18px; /* Increased font size */
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007BFF;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px; /* Increased font size */
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.weather-result {
+    margin-top: 20px;
+    font-size: 20px; /* Increased font size */
+    color: #333;
+}
+
+.weather-icon {
+    width: 100px; /* Increased icon size */
+    height: 100px; /* Increased icon size */
+    margin-bottom: 10px;
+}

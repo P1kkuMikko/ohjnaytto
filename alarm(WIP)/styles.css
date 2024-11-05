@@ -16,6 +16,13 @@ h1 {
   border-radius: 4px;
 }
 
+#alarm-title {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 5px;
+}
+
 button {
   padding: 5px 10px;
   border: none;
@@ -90,6 +97,11 @@ button:hover {
 
 .alarm-item .delete-alarm:hover {
   transform: scale(1.2);
+}
+
+.alarm-item .alarm-title {
+  font-weight: bold;
+  margin-right: 10px;
 }
 
 .alarm-container {

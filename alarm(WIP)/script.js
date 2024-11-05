@@ -2,12 +2,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const alarmList = document.getElementById('alarm-list');
     const setAlarmButton = document.getElementById('set-alarm');
     const alarmTimeInput = document.getElementById('alarm-time');
+    const alarmTitleInput = document.getElementById('alarm-title');
     let alarms = [];
 
     setAlarmButton.addEventListener('click', () => {
         const alarmTime = alarmTimeInput.value;
+        const alarmTitle = alarmTitleInput.value || 'Alarm';
         if (alarmTime) {
-            alarms.push({ time: alarmTime, active: true });
+            alarms.push({ time: alarmTime, title: alarmTitle, active: true });
             renderAlarms();
             saveAlarms();
         }
@@ -32,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderAlarms() {
         alarmList.innerHTML = alarms.map((alarm, index) => `
             <li class="alarm-item">
+                <span class="alarm-title">${alarm.title}</span>
                 ${alarm.time} 
                 <div class="toggle-alarm ${alarm.active ? 'active' : ''}" data-index="${index}"></div>
                 <button class="delete-alarm" data-index="${index}"><i class="fas fa-trash-alt"></i></button>
@@ -56,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const currentTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
         alarms.forEach(alarm => {
             if (alarm.active && alarm.time === currentTime) {
-                showNotification('Alarm', `It's ${alarm.time}!`);
+                showNotification(alarm.title, `It's ${alarm.time}!`);
                 alarm.active = false; // Disable the alarm after it goes off
                 renderAlarms();
                 saveAlarms();
