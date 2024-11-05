@@ -23,13 +23,16 @@ h1 {
   gap: 20px;
 }
 
-#alarm-time {
-  padding: 5px;
+#timer-hours,
+#timer-minutes,
+#timer-seconds {
+  padding: 3px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  width: 60px;
 }
 
-#alarm-title {
+#timer-title {
   padding: 3px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -52,7 +55,7 @@ button:hover {
   background-color: #357ab8;
 }
 
-#alarm-list {
+#timer-list {
   list-style-type: none;
   padding: 0;
   margin-top: 20px;
@@ -61,7 +64,7 @@ button:hover {
   margin-right: auto;
 }
 
-.alarm-item {
+.timer-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -72,7 +75,7 @@ button:hover {
   margin: 5px 0;
 }
 
-.alarm-item .toggle-alarm {
+.timer-item .toggle-timer {
   position: relative;
   width: 40px;
   height: 20px;
@@ -82,7 +85,7 @@ button:hover {
   transition: background-color 0.3s;
 }
 
-.alarm-item .toggle-alarm::before {
+.timer-item .toggle-timer::before {
   content: '';
   position: absolute;
   width: 18px;
@@ -94,15 +97,15 @@ button:hover {
   transition: transform 0.3s;
 }
 
-.alarm-item .toggle-alarm.active {
+.timer-item .toggle-timer.active {
   background-color: #4a90e2;
 }
 
-.alarm-item .toggle-alarm.active::before {
+.timer-item .toggle-timer.active::before {
   transform: translateX(20px);
 }
 
-.alarm-item .delete-alarm {
+.timer-item .delete-timer {
   background: none;
   border: none;
   cursor: pointer;
@@ -110,16 +113,16 @@ button:hover {
   transition: transform 0.3s;
 }
 
-.alarm-item .delete-alarm:hover {
+.timer-item .delete-timer:hover {
   transform: scale(1.2);
 }
 
-.alarm-item .alarm-title {
+.timer-item .timer-title {
   font-weight: bold;
   margin-right: 10px;
 }
 
-.alarm-container {
+.timer-container {
   background-color: #2c3e50;
   padding: 20px;
   border-radius: 8px;
