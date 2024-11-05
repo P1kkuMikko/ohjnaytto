@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', () => {
         alarms.forEach(alarm => {
             if (alarm.active && alarm.time === currentTime) {
                 showNotification(alarm.title, `It's ${alarm.time}!`);
-                alarm.active = false; // Disable the alarm after it goes off
+                alarm.active = false; 
                 renderAlarms();
                 saveAlarms();
             }
@@ -80,5 +80,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     loadAlarms();
-    setInterval(checkAlarms, 60000); // Check alarms every minute
+    setInterval(checkAlarms, 60000); 
 });

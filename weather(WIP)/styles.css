@@ -5,12 +5,12 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background: linear-gradient(135deg, #4a90e2, #d9e4f5); /* Changed background colors */
+    background: linear-gradient(135deg, #4a90e2, #d9e4f5);
 }
 
 .app-container {
     text-align: center;
-    background: linear-gradient(135deg, #00ff59, #0088ff); /* Changed to gradient background */
+    background: linear-gradient(135deg, #00ff59, #0088ff); 
     padding: 20px;
     border-radius: 15px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -20,7 +20,7 @@ body {
 h1 {
     margin-bottom: 20px;
     color: #333;
-    font-size: 28px; /* Increased font size */
+    font-size: 28px; 
 }
 
 input[type="text"] {
@@ -29,7 +29,7 @@ input[type="text"] {
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 18px; /* Increased font size */
+    font-size: 18px; 
 }
 
 button {
@@ -39,7 +39,7 @@ button {
     color: #fff;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 18px; /* Increased font size */
+    font-size: 18px; 
 }
 
 button:hover {
@@ -48,12 +48,12 @@ button:hover {
 
 .weather-result {
     margin-top: 20px;
-    font-size: 20px; /* Increased font size */
+    font-size: 20px;
     color: #333;
 }
 
 .weather-icon {
-    width: 100px; /* Increased icon size */
-    height: 100px; /* Increased icon size */
+    width: 100px; 
+    height: 100px; 
     margin-bottom: 10px;
 }

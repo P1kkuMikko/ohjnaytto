@@ -1,4 +1,3 @@
-// Function to get coordinates based on city name
 async function getCoordinates(city) {
     const response = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(city)}&format=json&limit=1`);
     const data = await response.json();
@@ -14,14 +13,12 @@ async function getCoordinates(city) {
     }
 }
 
-// Function to get weather data based on latitude and longitude
 async function getWeather(lat, lon) {
     const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`);
     const weatherData = await response.json();
     return weatherData.current_weather;
 }
 
-// Function to map weather codes to human-readable weather conditions and icons
 function getWeatherDescription(code) {
     const weatherDescriptions = {
         0: { description: 'Selkeää', icon: '01d' },
@@ -48,7 +45,6 @@ function getWeatherDescription(code) {
     return weatherDescriptions[code] || { description: 'Tuntematon säätila', icon: '01d' };
 }
 
-// Main function to search and display weather
 async function searchWeather() {
     const cityInput = document.getElementById('cityInput').value;
     const weatherResult = document.getElementById('weatherResult');
