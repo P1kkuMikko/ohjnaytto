@@ -11,7 +11,10 @@ import { logicCalc } from "../js/widget/Widgets.js";
 import { clock } from "../js/widget/clock/clockNew.js";
 import { widgetElements } from "../js/widget/elements.js";
 
-let insert = [{ x: 0, y: 0, w: 3, h: 5, locked: true, id: "calc", content: widgetElements.clock }];
+let insert = [
+  { x: 0, y: 0, w: 3, h: 8, locked: true, id: "calc", content: widgetElements.calc },
+  { x: 3, y: 0, w: 3, h: 5, locked: true, id: "clock", noResize: true, content: widgetElements.clock },
+];
 let children = [
   { x: 0, y: 0, w: 3, h: 8, locked: true, id: "calc", content: widgetElements.calc },
   { x: 3, y: 0, w: 3, h: 5, locked: true, id: "clock", noResize: true, content: widgetElements.clock },

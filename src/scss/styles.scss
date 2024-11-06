@@ -9,10 +9,10 @@ body {
 }
 /* --- widgets by gridstack id --- */
 
-div[gs-id="calc"] > * {
+div[gs-id^="calc"] > * {
   padding: 25px;
 }
-div[gs-id="clock"] > .grid-stack-item-content {
+div[gs-id^="clock"] > * {
   display: flex;
   justify-content: center;
   align-items: center;
