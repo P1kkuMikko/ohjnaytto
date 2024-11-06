@@ -4,10 +4,11 @@ import "gridstack/dist/gridstack.min.css";
 import { initializeGrid } from "./gridstack";
 import { initializeSidePanel } from "./sidepanel";
 import { logicCalc } from "../js/widget/Widgets.js";
-import { clock } from "../js/widget/clock/clockNew.js";
+import { digiclock } from "./widget/digiclock/digiclock.js";
 
 const grid = initializeGrid();
 initializeSidePanel();
+digiclock.init();
 
 function widgetOnClick(event: Event) {
   const gridItem = (event.target as HTMLElement).closest(".grid-stack-item");
@@ -31,7 +32,17 @@ function widgetOnClick(event: Event) {
   }
 }
 
-clock.init();
-setInterval(clock.update, 1000);
+grid.on("added", (event: Event, el: GridStackNode[]) => {
+  const id = el[0].id;
+  switch (true) {
+    case /clock/.test(id):
+      console.log("clock added");
+      // digiclock.init();
+      break;
+
+    default:
+      break;
+  }
+});
 
 document.querySelector(".grid-stack").addEventListener("click", widgetOnClick);

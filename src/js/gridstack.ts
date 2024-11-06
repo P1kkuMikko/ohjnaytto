@@ -1,16 +1,16 @@
 // src/js/gridstack.ts
 import "gridstack/dist/gridstack.min.css";
-import { GridStack, Utils } from "gridstack";
+import { GridStack, GridStackNode, Utils } from "gridstack";
 import { widgetElements } from "./widget/elements.js";
 
 export const insert = [
   { x: 0, y: 0, w: 3, h: 8, locked: true, id: "calc", content: widgetElements.calc },
-  { x: 3, y: 0, w: 3, h: 5, locked: true, id: "clock", noResize: true, content: widgetElements.clock },
+  { x: 3, y: 0, w: 3, h: 3, locked: true, id: "clock", noResize: true, content: widgetElements.clock },
 ];
 
 export const children = [
   { x: 0, y: 0, w: 3, h: 8, locked: true, id: "calc", content: widgetElements.calc },
-  { x: 3, y: 0, w: 3, h: 5, locked: true, id: "clock", noResize: true, content: widgetElements.clock },
+  { x: 3, y: 0, w: 3, h: 3, locked: true, id: "clock", noResize: true, content: widgetElements.clock },
   { x: 8, y: 10, w: 4, h: 2, content: "1" },
   { x: 0, y: 8, w: 4, h: 4, locked: true, content: 'I can\'t be moved or dragged, nor pushed by others!<br><ion-icon name="lock-closed-outline"></ion-icon>' },
   {
