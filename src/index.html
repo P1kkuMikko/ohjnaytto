@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Advanced grid demo</title>
+    <!-- <link rel="stylesheet" href="demo.css" /> -->
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+  </head>
+
+  <body data-bs-theme="dark">
+    <button id="sptogglebtn" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSP" aria-controls="offcanvasSP">Open Sidepanel</button>
+
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSP" aria-labelledby="offcanvasSPLabel">
+      <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasSPLabel">Offcanvas</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+      </div>
+      <div class="offcanvas-body sidepanel">
+        <div id="trash" class="sidepanel-item">
+          <ion-icon name="trash"></ion-icon>
+          <div>Drop here to remove!</div>
+        </div>
+        <div class="grid-stack-item sidepanel-item">
+          <ion-icon name="add-circle"></ion-icon>
+          <div>Drag me in the dashboard!</div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-10">
+        <div class="grid-stack"></div>
+      </div>
+    </div>
+
+    <script type="module" src="js/main.ts"></script>
+  </body>
+</html>

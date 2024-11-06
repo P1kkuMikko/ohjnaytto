@@ -17,6 +17,7 @@
     "noEmit": true,
     /* Linting */
     "strict": false,
+    "allowJs": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,

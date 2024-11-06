@@ -1,6 +1,7 @@
 /* required file for gridstack to work */
-@import "../node_modules/gridstack/dist/gridstack.css";
-@import "widget/calc/calc2.css";
+@import "/gridstack/dist/gridstack.css";
+@import "js/widget/calc/calc2.css";
+@import "js/widget/clock/clock.css";
 
 body {
   background-color: #212529;
@@ -9,7 +10,12 @@ body {
 
 div[gs-id="calc"] > * {
   padding: 25px;
-  border-radius: 10px;
+}
+div[gs-id="clock"] > .grid-stack-item-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
 }
 
 /* Optional styles for demos */
@@ -58,6 +64,7 @@ h1 {
 
 .sidebar > .grid-stack-item,
 .grid-stack-item-content {
+  border-radius: 10px;
   text-align: center;
   background-color: #6c757d;
 }
