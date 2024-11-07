@@ -1,4 +1,4 @@
-export const logicCalc = {
+export const calc = {
   handleEvent(e, gridItem) {
     const inputValue = gridItem.querySelector(".userinput");
     if (e.target.classList.contains("numbers")) this.handleNumber(e, inputValue);

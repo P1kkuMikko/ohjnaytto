@@ -1,43 +1,58 @@
 // Bootstrap
 import "../scss/styles.scss";
 import "gridstack/dist/gridstack.min.css";
+import { GridStack, GridStackNode } from "gridstack";
 import { initializeGrid } from "./gridstack";
 import { initializeSidePanel } from "./sidepanel";
-import { logicCalc } from "../js/widget/Widgets.js";
-import { digiclock } from "./widget/digiclock/digiclock.js";
+import { calc } from "../js/widget/calc/calc.js";
+import { DigiClock } from "./widget/digiclock/DigiClock.js";
 
+const widgetMap = new Map();
 const grid = initializeGrid();
 initializeSidePanel();
-digiclock.init();
 
-function widgetOnClick(event: Event) {
-  const gridItem = (event.target as HTMLElement).closest(".grid-stack-item");
+// Helper function to get the grid item
+function getGridItem(event: Event): HTMLElement | null {
+  return (event.target as HTMLElement).closest(".grid-stack-item");
+}
+
+// Helper function to get the grid item ID
+function getGridItemId(gridItem: HTMLElement): string {
+  return gridItem.getAttribute("gs-id") || "";
+}
+
+// Handle click and change events on grid
+function handleGridEvent(event: Event, eventType: "click" | "change") {
+  const gridItem = getGridItem(event);
   if (!gridItem) return;
 
-  // console.group(event.type);
-  // console.log("event.target:", event.target);
-  // console.log("gridItem:", gridItem);
-  // console.groupEnd();
-
-  const id = gridItem.getAttribute("gs-id") || "";
+  const id = getGridItemId(gridItem);
   if (!id) return;
 
-  switch (true) {
-    case /calc/.test(id):
-      logicCalc.handleEvent(event, gridItem);
-      break;
-    case /clock/.test(id):
-      console.log("todo");
-      break;
+  console.log(`${event.type} on ${id}`);
+
+  const widget = widgetMap.get(id);
+
+  if (/calc/.test(id)) {
+    if (eventType === "click") {
+      calc.handleEvent(event, gridItem);
+    }
+  } else if (/clock/.test(id)) {
+    if (eventType === "change") {
+      widget.updateClock();
+    }
   }
 }
 
-grid.on("added", (event: Event, el: GridStackNode[]) => {
-  const id = el[0].id;
+grid.on("added", (event: Event, items: GridStackNode[]) => {
+  // Todo add remove
+  // We should only have 1 item
+  const item = items[0];
+  console.log(item);
   switch (true) {
-    case /clock/.test(id):
+    case /clock/.test(item.id):
       console.log("clock added");
-      // digiclock.init();
+      widgetMap.set(item.id, new DigiClock(item.el));
       break;
 
     default:
@@ -45,4 +60,6 @@ grid.on("added", (event: Event, el: GridStackNode[]) => {
   }
 });
 
-document.querySelector(".grid-stack").addEventListener("click", widgetOnClick);
+// Event listeners
+document.querySelector(".grid-stack")?.addEventListener("click", (event) => handleGridEvent(event, "click"));
+document.querySelector(".grid-stack")?.addEventListener("change", (event) => handleGridEvent(event, "change"));

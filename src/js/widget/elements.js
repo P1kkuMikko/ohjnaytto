@@ -24,7 +24,7 @@ export const widgetElements = {
             <button type="button" class="numbers">.</button>
             <button type="button" class="operations">=</button>
         </div>`,
-  clock: `<div id="clock"></div>
-            <select id="timezone-selector">
+  clock: `<div class="clock"></div>
+            <select class="timezone-selector">
             </select>`,
 };
