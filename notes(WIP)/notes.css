@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  background: linear-gradient(135deg, #3498db, #9b59b6);
+  overflow: hidden;
+  min-height: 100vh;
+  color: #e6f7ff;
+}
+
+h1 {
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.notes-container {
+  background-color: #07003c;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 600px;
+  margin: 50px auto;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.input-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 25px;
+}
+
+#note-input {
+  padding: 10px;
+  border: 1px solid #e6f7ff;
+  border-radius: 6px;
+  width: 300px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #e6f7ff;
+}
+
+.formatting-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.formatting-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: #3498db;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.formatting-buttons button:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+.formatting-buttons button.active {
+  background-color: #2ecc71;
+}
+
+#free-text-area {
+  width: 100%;
+  height: 200px;
+  padding: 15px;
+  border: 1px solid #e6f7ff;
+  border-radius: 6px;
+  margin-bottom: 25px;
+  background-color: rgba(255, 255, 255, 0.2);
+  color: #e6f7ff;
+  text-align: left;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: #e6f7ff;
+  color: #4a90e2;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+button:hover {
+  background-color: #b0c4de;
+  transform: scale(1.05);
+}
+
+#notes-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: 25px;
+}
+
+.note-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2c3e50;
+  border: 1px solid #bdc3c7;
+  border-radius: 6px;
+  padding: 15px;
+  margin: 10px 0;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+}
+
+.note-item .delete-note {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #e74c3c;
+  transition: transform 0.3s;
+}
+
+.note-item .delete-note:hover {
+  transform: scale(1.2);
+}

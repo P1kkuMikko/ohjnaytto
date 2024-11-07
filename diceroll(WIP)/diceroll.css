@@ -1,7 +1,7 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -9,22 +9,23 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: linear-gradient(135deg, #2c3e50, #4a90e2);
+  background: linear-gradient(135deg, #4a90e2, #4a90e2, #2c3e50);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #e6f7ff;
 }
 
 .app-container {
   background-color: #2c3e50;
   border: 2px solid #ccc;
   border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
 }
 
 .dice-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
   justify-content: center;
   padding: 20px;
 }
@@ -39,20 +40,25 @@ body {
 #number-of-dice {
   width: 150px;
   margin-bottom: 10px;
+  border: 1px solid #e6f7ff;
+  background: rgba(255, 255, 255, 0.2);
+  color: #e6f7ff;
 }
 
 .btn-roll-dice {
   margin-top: 10px;
   padding: 10px 20px;
-  background-color: #4a90e2;
-  color: white;
+  background-color: #e6f7ff;
+  color: #4a90e2;
   border: none;
   border-radius: 5px;
   cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 .btn-roll-dice:hover {
-  background-color: #357ab8;
+  background-color: #b0c4de;
+  transform: scale(1.05);
 }
 
 .dice {
@@ -62,7 +68,7 @@ body {
   margin: 5px;
   border-radius: 10px;
   background-color: white;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   border: 1px solid #ccc;
 }
 
@@ -78,5 +84,6 @@ body {
   position: absolute;
   top: var(--top);
   left: var(--left);
-  transform: translateX(calc(var(--left) * -1)) translateY(calc(var(--top) * -1));
+  transform: translateX(calc(var(--left) * -1))
+    translateY(calc(var(--top) * -1));
 }

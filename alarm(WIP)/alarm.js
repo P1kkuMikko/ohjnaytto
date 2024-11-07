@@ -5,6 +5,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const alarmTitleInput = document.getElementById('alarm-title');
     let alarms = [];
 
+    if (Notification.permission !== 'granted') {
+        Notification.requestPermission().then(permission => {
+            if (permission !== 'granted') {
+                alert('Please enable notifications to use the alarm feature.');
+            }
+        });
+    }
+
     setAlarmButton.addEventListener('click', () => {
         const alarmTime = alarmTimeInput.value;
         const alarmTitle = alarmTitleInput.value || 'Alarm';
@@ -57,8 +65,11 @@ document.addEventListener('DOMContentLoaded', () => {
     function checkAlarms() {
         const now = new Date();
         const currentTime = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
+        console.log(`Current time: ${currentTime}`);
         alarms.forEach(alarm => {
+            console.log(`Checking alarm: ${alarm.title} at ${alarm.time}, active: ${alarm.active}`);
             if (alarm.active && alarm.time === currentTime) {
+                console.log(`Triggering alarm: ${alarm.title}`);
                 showNotification(alarm.title, `It's ${alarm.time}!`);
                 alarm.active = false;
                 renderAlarms();
@@ -80,5 +91,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     loadAlarms();
-    setInterval(checkAlarms, 60000);
+    setInterval(checkAlarms, 1000);
 });

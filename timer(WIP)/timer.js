@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const endTime = new Date(Date.now() + totalDuration).toISOString();
             timers.push({
                 duration: totalDuration,
-                initialDuration: totalDuration, // Store the initial duration
+                initialDuration: totalDuration, 
                 title: timerTitle,
                 endTime,
                 remainingTime: totalDuration,
@@ -36,14 +36,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const index = target.dataset.index;
         if (target.classList.contains('toggle-timer')) {
             if (timers[index].active) {
-                // Pausing the timer: store the current remaining time
                 timers[index].remainingTime = Math.max(0, new Date(timers[index].endTime) - new Date());
             } else {
                 // Resuming the timer:
                 if (timers[index].remainingTime > 0) {
                     timers[index].endTime = new Date(Date.now() + timers[index].remainingTime).toISOString();
                 } else {
-                    // If the timer is expired, reset it using the initial duration
                     timers[index].remainingTime = timers[index].initialDuration;
                     timers[index].endTime = new Date(Date.now() + timers[index].initialDuration).toISOString();
                 }
@@ -63,10 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
             let remainingTime;
 
             if (timer.active) {
-                // Calculate remaining time for active timers
                 remainingTime = Math.max(0, new Date(timer.endTime) - new Date());
             } else {
-                // Use stored remaining time for inactive timers
                 remainingTime = timer.remainingTime || timer.duration;
             }
 
@@ -104,14 +100,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (new Date(timer.endTime) <= now) {
                     showNotification(timer.title, `Timer is up!`);
                     timer.active = false;
-                    timer.remainingTime = 0; // Clear remaining time when the timer completes
+                    timer.remainingTime = 0; 
                     renderTimers();
                     saveTimers();
                 }
             }
         });
 
-        // Only update active timers to prevent unnecessary re-rendering
         if (timers.some(timer => timer.active)) {
             renderTimers();
         }
