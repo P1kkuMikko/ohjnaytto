@@ -27,4 +27,8 @@ export const widgetElements = {
   clock: `<div class="clock"></div>
             <select class="timezone-selector">
             </select>`,
+  weather: `<h1>Sää</h1>
+        <input type="text" id="cityInput" placeholder="Syötä kaupungin nimi" />
+        <button class="get-weather">Hae sää</button>
+        <div id="weatherResult" class="weather-result"></div>`,
 };

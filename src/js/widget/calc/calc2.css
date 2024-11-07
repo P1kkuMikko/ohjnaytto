@@ -14,12 +14,12 @@
   justify-content: center;
 } */
 
-.container {
+/* .container {
   background: black;
   padding: 25px;
   width: 350px;
   border-radius: 10px;
-}
+} */
 
 .calc-input {
   margin-bottom: 20px;
@@ -27,7 +27,7 @@
 }
 
 .calc-input {
-  width: 100%;
+  /* width: 100%; */
   font-size: 3.5rem;
   text-align: end;
   background: transparent;

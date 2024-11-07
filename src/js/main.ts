@@ -5,6 +5,7 @@ import { GridStack, GridStackNode } from "gridstack";
 import { initializeGrid } from "./gridstack";
 import { initializeSidePanel } from "./sidepanel";
 import { calc } from "../js/widget/calc/calc.js";
+import { searchWeather } from "./widget/weather/weather.js";
 import { DigiClock } from "./widget/digiclock/DigiClock.js";
 
 const widgetMap = new Map();
@@ -40,6 +41,10 @@ function handleGridEvent(event: Event, eventType: "click" | "change") {
   } else if (/clock/.test(id)) {
     if (eventType === "change") {
       widget.updateClock();
+    }
+  } else if (/weather/.test(id)) {
+    if (eventType === "click" && (event.target as HTMLElement).classList.contains("get-weather")) {
+      searchWeather();
     }
   }
 }
