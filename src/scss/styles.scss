@@ -1,9 +1,10 @@
 // Import all of Bootstrap's CSS
 @import "bootstrap/scss/bootstrap";
-@import "gridstack/dist/gridstack";
+// @import "gridstack/dist/src/gridstack-extra";
 @import "../js/widget/calc/calc2.css";
 @import "../js/widget/digiclock/digiclock.css";
 @import "../js/widget/weather/weather.css";
+@import "../js/widget/notes/notes.css";
 
 // Variables
 $primary-color: #007bff;
@@ -57,17 +58,29 @@ div[gs-id^="weather"] {
   }
 }
 
+div[gs-id^="notes"] > .grid-stack-item-content {
+  text-align: center;
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 600px;
+  margin: 50px auto;
+  
+}
+
 // Optional styles for demos
 .btn-primary {
   color: #fff;
   background-color: $primary-color;
 }
 
-.btn {
-  display: inline-block;
-  padding: 0.375rem 0.75rem;
-  line-height: 1.5;
-  border-radius: 0.25rem;
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  background-color: #e6f7ff;
+  color: #4a90e2;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 a {

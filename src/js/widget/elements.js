@@ -31,4 +31,16 @@ export const widgetElements = {
         <input type="text" id="cityInput" placeholder="Syötä kaupungin nimi" />
         <button class="get-weather">Hae sää</button>
         <div id="weatherResult" class="weather-result"></div>`,
+  notes: `<h1>Notes</h1>
+      <div class="input-container">
+        <input type="text" name="note-input" class="note-input" placeholder="Enter your note here" />
+        <button class="add-note-button">Add Note</button>
+      </div>
+      <div class="formatting-buttons">
+        <button class="bold-button"><b>B</b></button>
+        <button class="italic-button"><i>I</i></button>
+        <button class="underline-button"><u>U</u></button>
+      </div>
+      <div class="free-text-area" contenteditable="true" placeholder="Type freely here..."></div>
+      <ul class="notes-list"></ul>`,
 };
