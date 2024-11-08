@@ -38,7 +38,6 @@ export function initializeGrid() {
     float: true,
     cellHeight: "10em",
     animate: false,
-    // column: "auto",
     columnOpts: {
       breakpointForWindow: true,
       breakpoints: [

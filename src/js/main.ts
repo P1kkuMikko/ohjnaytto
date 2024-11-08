@@ -1,5 +1,6 @@
 // Bootstrap
 import "../scss/styles.scss";
+import "gridstack/dist/src/gridstack.scss";
 import { GridStack, GridStackNode } from "gridstack";
 import { initializeGrid } from "./gridstack";
 import { initializeSidePanel } from "./sidepanel";
