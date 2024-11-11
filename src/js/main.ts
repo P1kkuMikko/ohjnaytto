@@ -113,6 +113,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+grid.on("dragstart", showTrash);
+function showTrash(e, item) {
+  const element: HTMLButtonElement = document.querySelector("#trash");
+  element.style.display = "unset";
+}
+grid.on("dragstop", hideTrash);
+function hideTrash(e, item) {
+  const element: HTMLButtonElement = document.querySelector("#trash");
+  element.style.display = "none";
+}
+
 // const test = grid.save();
 // test.forEach((element) => {
 //   console.log(element);

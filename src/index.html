@@ -13,6 +13,9 @@
 
   <body data-bs-theme="dark">
     <button id="sptogglebtn" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasSP" aria-controls="offcanvasSP">Open Sidepanel</button>
+    <button id="trash" style="display: none">
+      <div>Drop here to remove!</div>
+    </button>
 
     <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasSP" aria-labelledby="offcanvasSPLabel">
       <div class="offcanvas-header">
@@ -20,10 +23,10 @@
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body sidepanel">
-        <div id="trash" class="sidepanel-item">
+        <!-- <div id="trash" class="sidepanel-item">
           <ion-icon name="trash"></ion-icon>
           <div>Drop here to remove!</div>
-        </div>
+        </div> -->
         <div class="grid-stack-item sidepanel-item">
           <ion-icon name="calculator-outline"></ion-icon>
           <div>Calculator</div>
