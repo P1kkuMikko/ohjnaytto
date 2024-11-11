@@ -3,27 +3,27 @@ import { GridStack, GridStackNode, Utils, Responsive } from "gridstack";
 import { widgetElements } from "./widget/elements.js";
 
 export const insert = [
-  { w: 3, h: 8, id: "calc", content: widgetElements.calc },
-  { w: 3, h: 3, id: "clock", content: widgetElements.clock },
-  { w: 3, h: 3, id: "weather", content: widgetElements.weather },
-  { w: 3, h: 3, id: "notes", content: widgetElements.notes },
+  { h: 4, id: "calc", content: widgetElements.calc },
+  { h: 2, id: "clock", content: widgetElements.clock },
+  { h: 4, id: "weather", content: widgetElements.weather },
+  { h: 4, w: 2, id: "notes", content: widgetElements.notes },
 ];
 
 // prettier-ignore
 export const children = [
-  { w: 1, h: 4, id: "calc", content: widgetElements.calc },
-  { w: 1, h: 4, id: "weather", content: widgetElements.weather },
-  { w: 1, h: 2, content: "1" },
-  { w: 1, h: 4, content: "2" },
-  { w: 1, h: 2, content: "3" },
-  { w: 1, h: 2, content: "4" },
-  { w: 1, h: 2, content: "5" },
-  { w: 1, h: 4, content: "6" },
-  { w: 1, h: 2, content: "7" },
-  { w: 1, h: 2, content: "8" },
-  { w: 1, h: 2, content: "9" },
-  { w: 1, h: 2, content: "10" },
-  { w: 1, h: 2, content: "11" },
+  {h: 4, id: 'calc', content: widgetElements.calc, x: 0, y: 0},
+  {h: 4, id: 'weather', content: widgetElements.weather, x: 1, y: 0},
+  {h: 2, id: 'clock', content: widgetElements.clock, x: 2, y: 0},
+  {h: 4, w: 2, id: 'notes', content: widgetElements.notes, x: 4, y: 0},
+  {h: 2, content: '4', x: 2, y: 2},
+  {h: 4, content: '6', x: 0, y: 4},
+  {h: 2, content: '7', x: 1, y: 4},
+  {h: 2, content: '8', x: 2, y: 4},
+  {h: 2, content: '9', x: 3, y: 4},
+  {h: 2, content: '3', x: 4, y: 4},
+  {h: 2, content: '11', x: 1, y: 6},
+  {h: 2, content: '5', x: 4, y: 6},
+  {h: 2, content: '10', x: 4, y: 8}
 ];
 
 export function initializeGrid() {
@@ -39,7 +39,7 @@ export function initializeGrid() {
     cellHeight: "10em",
     animate: false,
     columnOpts: {
-      breakpointForWindow: true,
+      breakpointForWindow: false,
       breakpoints: [
         { w: 450, c: 1 },
         { w: 900, c: 2 },

@@ -89,3 +89,21 @@ grid.on("added", (event: Event, items: GridStackNode[]) => {
 document.querySelector(".grid-stack")?.addEventListener("click", (event) => handleGridEvent(event, "click"));
 document.querySelector(".grid-stack")?.addEventListener("change", (event) => handleGridEvent(event, "change"));
 document.querySelector(".grid-stack")?.addEventListener("input", (event) => handleGridEvent(event, "input"));
+
+document.addEventListener("DOMContentLoaded", () => {
+  const arr = ["clock", "notes"];
+  grid.engine.nodes.forEach((item) => {
+    if (arr.indexOf(item.id) > -1) {
+      if (item.id === "clock") {
+        widgetMap.set(item.id, new DigiClock(item.el));
+      } else if (item.id === "notes") {
+        widgetMap.set(item.id, new Notes(item.el));
+      }
+    }
+  });
+});
+
+const test = grid.save();
+test.forEach((element) => {
+  console.log(element);
+});

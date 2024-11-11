@@ -22,7 +22,7 @@ h1 {
   background-color: #07003c;
   padding: 30px;
   border-radius: 12px;
-  max-width: 600px;
+  /* max-width: 600px; */
   margin: 50px auto;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
