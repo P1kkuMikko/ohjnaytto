@@ -43,4 +43,30 @@ export const widgetElements = {
       </div>
       <div class="free-text-area" contenteditable="true" placeholder="Type freely here..."></div>
       <ul class="notes-list"></ul>`,
+  coinflip: `<div class="stats">
+            <div class="counter-container">
+                <img src="images/coinflip/heads.png" alt="Heads Icon">
+                <p class="heads-count">Heads: 0</p>
+            </div>
+            <div class="counter-container">
+                <img src="images/coinflip/tails.png" alt="Tails Icon">
+                <p class="tails-count">Tails: 0</p>
+            </div>
+        </div>
+        <div class="coin">
+            <div class="heads">
+                <img src="images/coinflip/heads.png" alt="Heads">
+            </div>
+            <div class="tails">
+                <img src="images/coinflip/tails.png" alt="Tails">
+            </div>
+        </div>
+        <div class="buttons">
+            <button class="flip-button">
+                Flip Coin
+            </button>
+            <button class="reset-button">
+                Reset
+            </button>
+        </div>`,
 };

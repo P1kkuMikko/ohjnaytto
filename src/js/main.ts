@@ -8,6 +8,7 @@ import { calc } from "../js/widget/calc/calc.js";
 import { searchWeather } from "./widget/weather/weather.js";
 import { DigiClock } from "./widget/digiclock/DigiClock.js";
 import { Notes } from "./widget/notes/notes.js";
+import { CoinFlip } from "./widget/coinflip/Coinflip.js";
 
 /* TODO:
   Calc
@@ -19,6 +20,8 @@ import { Notes } from "./widget/notes/notes.js";
     * Classify ?
   Notes
     * Split Notes and Freetext to their own widgets ?
+    * Allow only single of type OR modify localStorage to support multiple widgets
+  Coinflip
     * Allow only single of type OR modify localStorage to support multiple widgets
 */
 
@@ -62,6 +65,8 @@ function handleGridEvent(event: Event, eventType: "click" | "change" | "input") 
     }
   } else if (/notes/.test(id)) {
     widget.handleEvent(event);
+  } else if (/coinflip/.test(id)) {
+    widget.handleEvent(event);
   }
 }
 
@@ -79,7 +84,10 @@ grid.on("added", (event: Event, items: GridStackNode[]) => {
       console.log(`${item.id} added`);
       widgetMap.set(item.id, new Notes(item.el));
       break;
-
+    case /coinflip/.test(item.id):
+      console.log(`${item.id} added`);
+      widgetMap.set(item.id, new CoinFlip(item.el));
+      break;
     default:
       break;
   }
@@ -91,19 +99,21 @@ document.querySelector(".grid-stack")?.addEventListener("change", (event) => han
 document.querySelector(".grid-stack")?.addEventListener("input", (event) => handleGridEvent(event, "input"));
 
 document.addEventListener("DOMContentLoaded", () => {
-  const arr = ["clock", "notes"];
+  const arr = ["clock", "notes", "coinflip"];
   grid.engine.nodes.forEach((item) => {
     if (arr.indexOf(item.id) > -1) {
       if (item.id === "clock") {
         widgetMap.set(item.id, new DigiClock(item.el));
       } else if (item.id === "notes") {
         widgetMap.set(item.id, new Notes(item.el));
+      } else if (item.id === "coinflip") {
+        widgetMap.set(item.id, new CoinFlip(item.el));
       }
     }
   });
 });
 
-const test = grid.save();
-test.forEach((element) => {
-  console.log(element);
-});
+// const test = grid.save();
+// test.forEach((element) => {
+//   console.log(element);
+// });

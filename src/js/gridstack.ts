@@ -7,6 +7,7 @@ export const insert = [
   { h: 2, id: "clock", content: widgetElements.clock },
   { h: 4, id: "weather", content: widgetElements.weather },
   { h: 4, w: 2, id: "notes", content: widgetElements.notes },
+  { h: 2, id: "coinflip", content: widgetElements.coinflip },
 ];
 
 // prettier-ignore
@@ -15,7 +16,7 @@ export const children = [
   {h: 4, id: 'weather', content: widgetElements.weather, x: 1, y: 0},
   {h: 2, id: 'clock', content: widgetElements.clock, x: 2, y: 0},
   {h: 4, w: 2, id: 'notes', content: widgetElements.notes, x: 4, y: 0},
-  {h: 2, content: '4', x: 2, y: 2},
+  {h: 2, id: 'coinflip', content: widgetElements.coinflip, x: 2, y: 2},
   {h: 4, content: '6', x: 0, y: 4},
   {h: 2, content: '7', x: 1, y: 4},
   {h: 2, content: '8', x: 2, y: 4},

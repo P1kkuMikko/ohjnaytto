@@ -5,6 +5,7 @@
 @import "../js/widget/digiclock/digiclock.css";
 @import "../js/widget/weather/weather.css";
 @import "../js/widget/notes/notes.css";
+@import "../js/widget/coinflip/coinflip.css";
 
 // Variables
 $primary-color: #007bff;
@@ -20,8 +21,6 @@ $clock-color: #4a90e2;
 body {
   background: $gradient-bg;
 }
-
-
 // Mixins
 @mixin flex-center {
   display: flex;
@@ -64,6 +63,11 @@ div[gs-id^="notes"] > .grid-stack-item-content {
   border-radius: 12px;
   margin: 50px auto;
   
+}
+
+div[gs-id^="coinflip"] > .grid-stack-item-content {
+  padding: 25px;
+  border-radius: 15px;
 }
 
 // Optional styles for demos
