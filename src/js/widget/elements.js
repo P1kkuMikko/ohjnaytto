@@ -69,4 +69,15 @@ export const widgetElements = {
                 Reset
             </button>
         </div>`,
+  timer: `<div>
+                <label for="timer-hours">Hours:</label>
+                <input type="number" class="timer-hours" name="timer-hours" min="0" value="0">
+                <label for="timer-minutes">Minutes:</label>
+                <input type="number" class="timer-minutes" name="timer-minutes" min="0" value="0">
+                <label for="timer-seconds">Seconds:</label>
+                <input type="number"class="timer-seconds" name="timer-seconds" min="0" value="0">
+                <input type="text" class="timer-title" placeholder="Timer Title">
+                <button class="set-timer">Set Timer</button>
+            </div>
+            <ul class="timer-list"></ul>`,
 };

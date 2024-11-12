@@ -6,6 +6,7 @@
 @import "../js/widget/weather/weather.css";
 @import "../js/widget/notes/notes.css";
 @import "../js/widget/coinflip/coinflip.css";
+@import "../js/widget/timer/timer.css";
 
 // Variables
 $primary-color: #007bff;
@@ -70,6 +71,15 @@ div[gs-id^="coinflip"] > .grid-stack-item-content {
   border-radius: 15px;
 }
 
+div[gs-id^="timer"] {
+  @include flex-center();
+  gap: 20px;
+ > {
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+ }
+}
 // Optional styles for demos
 .btn-primary {
   color: #fff;

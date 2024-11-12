@@ -7,6 +7,7 @@ import { calc } from "../js/widget/calc/calc.js";
 import { searchWeather } from "./widget/weather/weather.js";
 import { DigiClock } from "./widget/digiclock/DigiClock.js";
 import { Notes } from "./widget/notes/notes.js";
+import { Timer } from "./widget/timer/timer.js";
 import { CoinFlip } from "./widget/coinflip/Coinflip.js";
 
 const widgetMap = new Map();
@@ -72,6 +73,7 @@ function handleGridEvent(event: Event, eventType: "click" | "change" | "input") 
       break;
     case "notes":
     case "coinflip":
+    case "timer":
       widget.handleEvent(event);
       break;
   }
@@ -80,12 +82,8 @@ function handleGridEvent(event: Event, eventType: "click" | "change" | "input") 
 function gridOnAddedRemoved(event: Event, items: GridStackNode[]) {
   const item = items[0]; // We should only have 1 item
 
-  if (!widgetMap.has(item.id)) {
-    return;
-  }
-
   if (event.type === "removed") {
-    widgetMap.delete(item.id);
+    if (widgetMap.has(item.id)) widgetMap.delete(item.id);
     return;
   }
 
@@ -99,11 +97,14 @@ function gridOnAddedRemoved(event: Event, items: GridStackNode[]) {
     case "coinflip":
       widgetMap.set(item.id, new CoinFlip(item.el));
       break;
+    case "timer":
+      widgetMap.set(item.id, new Timer(item.el));
+      break;
   }
 }
 
 function initializeWidgetMap() {
-  const arr = ["clock", "notes", "coinflip"];
+  const arr = ["clock", "notes", "coinflip", "timer"];
   grid.engine.nodes.forEach((item) => {
     if (arr.indexOf(item.id) > -1) {
       if (item.id === "clock") {
@@ -112,6 +113,8 @@ function initializeWidgetMap() {
         widgetMap.set(item.id, new Notes(item.el));
       } else if (item.id === "coinflip") {
         widgetMap.set(item.id, new CoinFlip(item.el));
+      } else if (item.id === "timer") {
+        widgetMap.set(item.id, new Timer(item.el));
       }
     }
   });
