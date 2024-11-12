@@ -39,56 +39,58 @@ function getGridItemId(gridItem: HTMLElement): string {
   return gridItem.getAttribute("gs-id") || "";
 }
 
+function toLetters(str: String) {
+  return str.replace(/[^a-zA-Z]+/g, "");
+}
+
 // Handle click and change events on grid
 function handleGridEvent(event: Event, eventType: "click" | "change" | "input") {
   const gridItem = getGridItem(event);
   if (!gridItem) return;
-
   const id = getGridItemId(gridItem);
   if (!id) return;
 
-  console.log(`${event.type} on ${id}`);
+  console.debug(`${event.type} on ${id}`);
 
   const widget = widgetMap.get(id);
 
-  if (/calc/.test(id)) {
-    if (eventType === "click") {
-      calc.handleEvent(event, gridItem);
-    }
-  } else if (/clock/.test(id)) {
-    if (eventType === "change") {
-      widget.updateClock();
-    }
-  } else if (/weather/.test(id)) {
-    if (eventType === "click" && (event.target as HTMLElement).classList.contains("get-weather")) {
-      searchWeather();
-    }
-  } else if (/notes/.test(id)) {
-    widget.handleEvent(event);
-  } else if (/coinflip/.test(id)) {
-    widget.handleEvent(event);
+  switch (toLetters(id)) {
+    case "calc":
+      if (eventType === "click") {
+        calc.handleEvent(event, gridItem);
+      }
+      break;
+    case "clock":
+      if (eventType === "change") {
+        widget.updateClock();
+      }
+      break;
+    case "weather":
+      if ((event.target as HTMLElement).classList.contains("get-weather")) {
+        searchWeather();
+      }
+      break;
+    case "notes":
+    case "coinflip":
+      widget.handleEvent(event);
+      break;
   }
 }
 
-grid.on("added", (event: Event, items: GridStackNode[]) => {
+grid.on("added removed", (_: Event, items: GridStackNode[]) => {
   // Todo add remove
   // We should only have 1 item
   const item = items[0];
   console.log(item);
-  switch (true) {
-    case /clock/.test(item.id):
-      console.log(`${item.id} added`);
+  switch (toLetters(item.id)) {
+    case "clock":
       widgetMap.set(item.id, new DigiClock(item.el));
       break;
-    case /notes/.test(item.id):
-      console.log(`${item.id} added`);
+    case "notes":
       widgetMap.set(item.id, new Notes(item.el));
       break;
-    case /coinflip/.test(item.id):
-      console.log(`${item.id} added`);
+    case "coinflip":
       widgetMap.set(item.id, new CoinFlip(item.el));
-      break;
-    default:
       break;
   }
 });
@@ -114,12 +116,12 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 grid.on("dragstart", showTrash);
-function showTrash(e, item) {
+function showTrash() {
   const element: HTMLButtonElement = document.querySelector("#trash");
   element.style.display = "unset";
 }
 grid.on("dragstop", hideTrash);
-function hideTrash(e, item) {
+function hideTrash() {
   const element: HTMLButtonElement = document.querySelector("#trash");
   element.style.display = "none";
 }
