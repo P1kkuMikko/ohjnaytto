@@ -1,4 +1,3 @@
-// Bootstrap
 import "../scss/styles.scss";
 import "gridstack/dist/src/gridstack.scss";
 import { GridStack, GridStackNode } from "gridstack";
@@ -9,6 +8,10 @@ import { searchWeather } from "./widget/weather/weather.js";
 import { DigiClock } from "./widget/digiclock/DigiClock.js";
 import { Notes } from "./widget/notes/notes.js";
 import { CoinFlip } from "./widget/coinflip/Coinflip.js";
+
+const widgetMap = new Map();
+const grid = initializeGrid();
+initializeSidePanel();
 
 /* TODO:
   Calc
@@ -25,10 +28,6 @@ import { CoinFlip } from "./widget/coinflip/Coinflip.js";
     * Allow only single of type OR modify localStorage to support multiple widgets
 */
 
-const widgetMap = new Map();
-const grid = initializeGrid();
-initializeSidePanel();
-
 // Helper function to get the grid item
 function getGridItem(event: Event): HTMLElement | null {
   return (event.target as HTMLElement).closest(".grid-stack-item");
@@ -39,6 +38,7 @@ function getGridItemId(gridItem: HTMLElement): string {
   return gridItem.getAttribute("gs-id") || "";
 }
 
+// Strip everything else except letters from a string
 function toLetters(str: String) {
   return str.replace(/[^a-zA-Z]+/g, "");
 }
@@ -77,11 +77,18 @@ function handleGridEvent(event: Event, eventType: "click" | "change" | "input") 
   }
 }
 
-grid.on("added removed", (_: Event, items: GridStackNode[]) => {
-  // Todo add remove
-  // We should only have 1 item
-  const item = items[0];
-  console.log(item);
+function gridOnAddedRemoved(event: Event, items: GridStackNode[]) {
+  const item = items[0]; // We should only have 1 item
+
+  if (!widgetMap.has(item.id)) {
+    return;
+  }
+
+  if (event.type === "removed") {
+    widgetMap.delete(item.id);
+    return;
+  }
+
   switch (toLetters(item.id)) {
     case "clock":
       widgetMap.set(item.id, new DigiClock(item.el));
@@ -93,14 +100,9 @@ grid.on("added removed", (_: Event, items: GridStackNode[]) => {
       widgetMap.set(item.id, new CoinFlip(item.el));
       break;
   }
-});
+}
 
-// Event listeners
-document.querySelector(".grid-stack")?.addEventListener("click", (event) => handleGridEvent(event, "click"));
-document.querySelector(".grid-stack")?.addEventListener("change", (event) => handleGridEvent(event, "change"));
-document.querySelector(".grid-stack")?.addEventListener("input", (event) => handleGridEvent(event, "input"));
-
-document.addEventListener("DOMContentLoaded", () => {
+function initializeWidgetMap() {
   const arr = ["clock", "notes", "coinflip"];
   grid.engine.nodes.forEach((item) => {
     if (arr.indexOf(item.id) > -1) {
@@ -113,18 +115,22 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
-});
+}
 
-grid.on("dragstart", showTrash);
-function showTrash() {
+function toggleTrash(event: Event) {
   const element: HTMLButtonElement = document.querySelector("#trash");
-  element.style.display = "unset";
+  if (event.type === "dragstart") element.style.display = "unset";
+  else if (event.type === "dragstop") element.style.display = "none";
 }
-grid.on("dragstop", hideTrash);
-function hideTrash() {
-  const element: HTMLButtonElement = document.querySelector("#trash");
-  element.style.display = "none";
-}
+
+// Event listeners
+
+grid.on("dragstart dragstop", toggleTrash);
+grid.on("added removed", gridOnAddedRemoved);
+document.addEventListener("DOMContentLoaded", initializeWidgetMap);
+document.querySelector(".grid-stack")?.addEventListener("click", (event) => handleGridEvent(event, "click"));
+document.querySelector(".grid-stack")?.addEventListener("change", (event) => handleGridEvent(event, "change"));
+document.querySelector(".grid-stack")?.addEventListener("input", (event) => handleGridEvent(event, "input"));
 
 // const test = grid.save();
 // test.forEach((element) => {
