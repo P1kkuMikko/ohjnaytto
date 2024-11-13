@@ -1,5 +1,5 @@
 import "gridstack/dist/src/gridstack.scss";
-import { GridStack, GridStackNode, Utils, Responsive } from "gridstack";
+import { GridStack, GridStackNode, Utils, Responsive, GridStackElement, GridStackWidget } from "gridstack";
 import { widgetElements } from "./widget/elements.js";
 
 export const insert = [
@@ -18,7 +18,7 @@ export const children = [
   {h: 2, id: 'clock', content: widgetElements.clock, x: 2, y: 0},
   {h: 4, id: 'notes', content: widgetElements.notes, x: 4, y: 0},
   {h: 2, id: 'coinflip', content: widgetElements.coinflip, x: 2, y: 2},
-  { h: 2, id: "timer", content: widgetElements.timer, x:3, y:0  },
+  { h: 2, id: "timer", content: widgetElements.timer, x:3, y:0 },
   {h: 2, content: '7', x: 1, y: 4},
   {h: 2, content: '8', x: 2, y: 4},
   {h: 2, content: '9', x: 3, y: 4},
@@ -34,7 +34,7 @@ export function initializeGrid() {
     el.innerHTML = w.content;
   };
 
-  GridStack.setupDragIn(".sidepanel>.grid-stack-item", undefined, insert);
+  GridStack.setupDragIn(".sidepanel>.grid-stack-item", { helper: myClone }, insert);
 
   let grid = GridStack.init({
     float: true,
@@ -50,10 +50,23 @@ export function initializeGrid() {
         { w: 2000, c: 5 },
       ],
     },
-    acceptWidgets: true,
     removable: "#trash", // drag-out delete class
     children,
   });
 
+  grid.opts.acceptWidgets = gridContains;
+
   return grid;
+}
+
+function gridContains(el: Element, grid = GridStack.init()) {
+  return GridStack.Utils.find(grid.engine.nodes, el.getAttribute("gs-id")) ? false : true;
+}
+
+function myClone(el) {
+  if (el.hasAttribute("gs-id")) {
+    const id = el.getAttribute("gs-id");
+    console.log(id);
+    return GridStack.Utils.createWidgetDivs(undefined, { w: 1, content: widgetElements[id] });
+  }
 }

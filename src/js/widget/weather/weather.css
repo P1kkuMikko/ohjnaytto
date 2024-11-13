@@ -41,21 +41,6 @@ input[type="text"] {
   color: #e6f7ff;
 }
 
-div[gs-id^="weather"] button {
-  padding: 10px 20px;
-  border: none;
-  background-color: #e6f7ff;
-  color: #4a90e2;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 18px;
-  transition: background-color 0.3s;
-}
-
-div[gs-id^="weather"] button:hover {
-  background-color: #b0c4de;
-}
-
 .weather-result {
   margin-top: 20px;
   font-size: 20px;

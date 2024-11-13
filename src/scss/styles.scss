@@ -29,57 +29,37 @@ body {
   align-items: center;
 }
 
-// Widgets by gridstack id
-div[gs-id^="calc"] > * {
-  padding: 25px;
-}
-
-div[gs-id^="clock"] > .grid-stack-item-content{
+.grid-stack {
+  div[gs-id^="clock"] > .grid-stack-item-content{
   @include flex-center();
   flex-direction: column;
   padding: 20px;
   border-radius: 10px;
-
-  > {
-    font-size: 64px;
-    margin-bottom: 20px;
-    color: $clock-color
   }
-}
 
-div[gs-id^="weather"] {
-  @include flex-center();
-  > {
+  div[gs-id^="weather"] > .grid-stack-item-content {
     text-align: center;
-    padding: 20px;
     border-radius: 15px;
-    
-    width: 350px;
   }
+
+  div[gs-id^="notes"] > .grid-stack-item-content {
+    text-align: center;
+    padding: 30px;
+    border-radius: 12px;
+  }
+
+  div[gs-id^="coinflip"] > .grid-stack-item-content {
+    padding: 25px;
+    border-radius: 15px;
+  }
+
+  div[gs-id^="timer"] > .grid-stack-item-content {
+    gap: 20px;
+    border-radius: 8px;
+  }
+
 }
 
-div[gs-id^="notes"] > .grid-stack-item-content {
-  text-align: center;
-  padding: 30px;
-  border-radius: 12px;
-  margin: 50px auto;
-  
-}
-
-div[gs-id^="coinflip"] > .grid-stack-item-content {
-  padding: 25px;
-  border-radius: 15px;
-}
-
-div[gs-id^="timer"] {
-  @include flex-center();
-  gap: 20px;
- > {
-  padding: 20px;
-  border-radius: 8px;
-  max-width: 400px;
- }
-}
 // Optional styles for demos
 .btn-primary {
   color: #fff;
@@ -89,11 +69,16 @@ div[gs-id^="timer"] {
 button {
   padding: 10px 20px;
   border: none;
-  border-radius: 6px;
   background-color: #e6f7ff;
   color: #4a90e2;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.3s;
+  font-size: 18px;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #b0c4de;
 }
 
 a {
@@ -140,6 +125,7 @@ h1 {
 
   .grid-stack-item-content {
     border-radius: 10px;
+    padding: 10px;
     text-align: center;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
     background-color: $grid-stack-item-bg;

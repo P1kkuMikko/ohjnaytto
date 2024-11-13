@@ -1,6 +1,6 @@
 import "../scss/styles.scss";
 import "gridstack/dist/src/gridstack.scss";
-import { GridStack, GridStackNode } from "gridstack";
+import { GridHTMLElement, GridStack, GridStackEngine, GridStackNode } from "gridstack";
 import { initializeGrid } from "./gridstack";
 import { initializeSidePanel } from "./sidepanel";
 import { calc } from "../js/widget/calc/calc.js";
@@ -24,9 +24,6 @@ initializeSidePanel();
     * Classify ?
   Notes
     * Split Notes and Freetext to their own widgets ?
-    * Allow only single of type OR modify localStorage to support multiple widgets
-  Coinflip
-    * Allow only single of type OR modify localStorage to support multiple widgets
 */
 
 // Helper function to get the grid item
@@ -81,6 +78,7 @@ function handleGridEvent(event: Event, eventType: "click" | "change" | "input") 
 
 function gridOnAddedRemoved(event: Event, items: GridStackNode[]) {
   const item = items[0]; // We should only have 1 item
+  console.log(gridHasItem(item.id));
 
   if (event.type === "removed") {
     if (widgetMap.has(item.id)) widgetMap.delete(item.id);
@@ -120,14 +118,20 @@ function initializeWidgetMap() {
   });
 }
 
+function gridHasItem(id) {
+  // const gridItems = grid.getGridItems();
+  // const currentItemIds = nodes.map((item) => item.id).filter((item) => item !== undefined);
+  // console.log(currentItemIds.indexOf(id) > -1);
+  // const items = [...document.querySelectorAll(".sidepanel-item")].map((item) => item["gridstackNode"].id);
+  // console.log(items);
+}
+
 function toggleTrash(event: Event) {
   const element: HTMLButtonElement = document.querySelector("#trash");
-  if (event.type === "dragstart") element.style.display = "unset";
-  else if (event.type === "dragstop") element.style.display = "none";
+  event.type === "dragstart" ? (element.hidden = false) : (element.hidden = true);
 }
 
 // Event listeners
-
 grid.on("dragstart dragstop", toggleTrash);
 grid.on("added removed", gridOnAddedRemoved);
 document.addEventListener("DOMContentLoaded", initializeWidgetMap);

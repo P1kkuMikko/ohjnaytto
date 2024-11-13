@@ -81,7 +81,7 @@ h1 {
   text-align: left;
 }
 
-button {
+/* button {
   padding: 10px 20px;
   border: none;
   border-radius: 6px;
@@ -89,12 +89,12 @@ button {
   color: #4a90e2;
   cursor: pointer;
   transition: background-color 0.3s, transform 0.3s;
-}
+} */
 
-button:hover {
+/* button:hover {
   background-color: #b0c4de;
   transform: scale(1.05);
-}
+} */
 
 .notes-list {
   list-style-type: none;
