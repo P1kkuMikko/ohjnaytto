@@ -4,7 +4,7 @@ import { GridHTMLElement, GridStack, GridStackEngine, GridStackNode } from "grid
 import { initializeGrid } from "./gridstack";
 import { initializeSidePanel } from "./sidepanel";
 import { calc } from "../js/widget/calc/calc.js";
-import { searchWeather } from "./widget/weather/weather.js";
+import { loadLastCity, searchWeather } from "./widget/weather/weather.js";
 import { DigiClock } from "./widget/digiclock/DigiClock.js";
 import { Notes } from "./widget/notes/notes.js";
 import { Timer } from "./widget/timer/timer.js";
@@ -89,6 +89,7 @@ function gridOnAddedRemoved(event: Event, items: GridStackNode[]) {
 
     if (event.type !== "added") continue;
     if (Object.keys(arr).includes(item.id)) widgetMap.set(item.id, new arr[item.id](item.el));
+    else if (item.id === "weather") loadLastCity(); // HACKY
   }
 
   const savedGrid = grid.save();
