@@ -48,7 +48,7 @@ function handleGridEvent(event: Event, eventType: "click" | "change" | "input") 
   const id = getGridItemId(gridItem);
   if (!id) return;
 
-  console.debug(`${event.type} on ${id}`);
+  console.log(`${event.type} @ ${id}`);
 
   const widget = widgetMap.get(id);
 

@@ -14,7 +14,6 @@ function initializeSidePanel(): void {
 }
 
 function onMouseDown(e: MouseEvent): void {
-  console.log("onMouseDown");
   const closest = (e.target as HTMLElement).closest(".sidepanel-item");
   if (!closest) return;
   hide();
@@ -22,6 +21,7 @@ function onMouseDown(e: MouseEvent): void {
 
 function hide(): void {
   if (offcanvas) {
+    console.log("Hiding Sidebar");
     offcanvas.hide();
   }
 }

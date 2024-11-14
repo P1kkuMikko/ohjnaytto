@@ -66,7 +66,7 @@ function gridContains(el: Element, grid = GridStack.init()) {
 function myClone(el) {
   if (el.hasAttribute("gs-id")) {
     const id = el.getAttribute("gs-id");
-    console.log(id);
+    console.log("Cloning:", id);
     return GridStack.Utils.createWidgetDivs(undefined, { w: 1, content: widgetElements[id] });
   }
 }

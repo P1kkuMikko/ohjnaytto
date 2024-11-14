@@ -103,7 +103,7 @@ export class Timer {
               <span class="timer-title">${timer.title}</span>
               ${hours}h ${minutes}m ${seconds}s
               <div class="toggle-timer ${timer.active ? "active" : ""}" data-index="${index}"></div>
-              <button class="delete-timer" data-index="${index}"><i class="fas fa-trash-alt"></i></button>
+              <button class="delete-timer" data-index="${index}"><ion-icon name="trash-outline"></ion-icon></button>
             </li>
           `;
       })
