@@ -111,6 +111,7 @@ h1 {
 
 .grid-stack {
   // background: $grid-stack-bg;
+  min-height: 90vh;
 
   > .grid-stack-item.grid-stack-sub-grid > .grid-stack-item-content {
     background: rgba(0, 0, 0, 0.1);

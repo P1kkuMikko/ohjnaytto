@@ -1,4 +1,4 @@
-export { searchWeather };
+export { searchWeather, loadLastCity };
 async function getCoordinates(city) {
   const response = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(city)}&format=json&limit=1`);
   const data = await response.json();
@@ -82,10 +82,10 @@ async function searchWeather() {
   }
 }
 
-window.onload = async () => {
+async function loadLastCity() {
   const lastCity = localStorage.getItem("lastCity");
   if (lastCity) {
     document.getElementById("cityInput").value = lastCity;
     await searchWeather();
   }
-};
+}

@@ -77,53 +77,27 @@ function handleGridEvent(event: Event, eventType: "click" | "change" | "input") 
 }
 
 function gridOnAddedRemoved(event: Event, items: GridStackNode[]) {
-  const item = items[0]; // We should only have 1 item
-  console.log(gridHasItem(item.id));
+  const arr = { coinflip: CoinFlip, clock: DigiClock, notes: Notes, timer: Timer };
 
-  if (event.type === "removed") {
-    if (widgetMap.has(item.id)) widgetMap.delete(item.id);
-    return;
-  }
+  for (let index = 0; index < items.length; index++) {
+    const item = items[index];
 
-  switch (toLetters(item.id)) {
-    case "clock":
-      widgetMap.set(item.id, new DigiClock(item.el));
-      break;
-    case "notes":
-      widgetMap.set(item.id, new Notes(item.el));
-      break;
-    case "coinflip":
-      widgetMap.set(item.id, new CoinFlip(item.el));
-      break;
-    case "timer":
-      widgetMap.set(item.id, new Timer(item.el));
-      break;
-  }
-}
-
-function initializeWidgetMap() {
-  const arr = ["clock", "notes", "coinflip", "timer"];
-  grid.engine.nodes.forEach((item) => {
-    if (arr.indexOf(item.id) > -1) {
-      if (item.id === "clock") {
-        widgetMap.set(item.id, new DigiClock(item.el));
-      } else if (item.id === "notes") {
-        widgetMap.set(item.id, new Notes(item.el));
-      } else if (item.id === "coinflip") {
-        widgetMap.set(item.id, new CoinFlip(item.el));
-      } else if (item.id === "timer") {
-        widgetMap.set(item.id, new Timer(item.el));
-      }
+    if (event.type === "removed") {
+      if (widgetMap.has(item.id)) widgetMap.delete(item.id);
+      continue;
     }
-  });
+
+    if (event.type !== "added") continue;
+    if (Object.keys(arr).includes(item.id)) widgetMap.set(item.id, new arr[item.id](item.el));
+  }
+
+  const savedGrid = grid.save();
+  localStorage.setItem("gridNodes", JSON.stringify(savedGrid));
 }
 
-function gridHasItem(id) {
-  // const gridItems = grid.getGridItems();
-  // const currentItemIds = nodes.map((item) => item.id).filter((item) => item !== undefined);
-  // console.log(currentItemIds.indexOf(id) > -1);
-  // const items = [...document.querySelectorAll(".sidepanel-item")].map((item) => item["gridstackNode"].id);
-  // console.log(items);
+function loadSavedGrid() {
+  const savedGrid = JSON.parse(localStorage.getItem("gridNodes"));
+  grid.load(savedGrid);
 }
 
 function toggleTrash(event: Event) {
@@ -133,13 +107,8 @@ function toggleTrash(event: Event) {
 
 // Event listeners
 grid.on("dragstart dragstop", toggleTrash);
-grid.on("added removed", gridOnAddedRemoved);
-document.addEventListener("DOMContentLoaded", initializeWidgetMap);
+grid.on("added removed change", gridOnAddedRemoved);
+document.addEventListener("DOMContentLoaded", loadSavedGrid);
 document.querySelector(".grid-stack")?.addEventListener("click", (event) => handleGridEvent(event, "click"));
 document.querySelector(".grid-stack")?.addEventListener("change", (event) => handleGridEvent(event, "change"));
 document.querySelector(".grid-stack")?.addEventListener("input", (event) => handleGridEvent(event, "input"));
-
-// const test = grid.save();
-// test.forEach((element) => {
-//   console.log(element);
-// });
