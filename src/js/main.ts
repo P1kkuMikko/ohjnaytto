@@ -98,7 +98,7 @@ function gridOnAddedRemoved(event: Event, items: GridStackNode[]) {
 
 function loadSavedGrid() {
   const savedGrid = JSON.parse(localStorage.getItem("gridNodes"));
-  grid.load(savedGrid);
+  if (savedGrid) grid.load(savedGrid);
 }
 
 function toggleTrash(event: Event) {
