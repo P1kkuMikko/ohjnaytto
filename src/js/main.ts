@@ -2,7 +2,7 @@ import "../scss/styles.scss";
 import "gridstack/dist/src/gridstack.scss";
 import { GridStackNode } from "gridstack";
 import { initializeGrid } from "./gridstack";
-import { initializeSidePanel, updateAvailableWidgets, updateSidebarWidgets } from "./sidepanel";
+import { initializeSidePanel, updateSidebarWidgets } from "./sidepanel";
 import { calc } from "../js/widget/calc/calc.js";
 import { loadLastCity, searchWeather } from "./widget/weather/weather";
 import { DigiClock } from "./widget/digiclock/DigiClock.js";
