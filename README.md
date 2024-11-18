@@ -5,7 +5,7 @@
     # Todo:
     - [ ] Improve project file structure.
     - [ ] Fix Notes duplicating items on page refresh.
-    - [ ] Show in sidebar if widget cannot be placed anymore.
+    - [X] Show in sidebar if widget cannot be placed anymore.
     - [ ] Split Notes into 2 separate widgets.
     - [ ] Declare widget data in more clear way (instead of elements.js for content etc..)
     - [ ] Single interval which ticks all the clocks at once.
