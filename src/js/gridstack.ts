@@ -1,6 +1,6 @@
 import "gridstack/dist/src/gridstack.scss";
 import { GridStack } from "gridstack";
-import { widgetElements } from "./widget/elements.js";
+import { widgetElements } from "./widget/elements";
 import { sidepanelHide } from "./sidepanel.js";
 
 export const insert = [
@@ -68,7 +68,7 @@ function myClone(el) {
   if (el.hasAttribute("gs-id")) {
     const id = el.getAttribute("gs-id");
     console.log("Cloning:", id);
-		sidepanelHide()
+    sidepanelHide();
     return GridStack.Utils.createWidgetDivs(undefined, { w: 1, content: widgetElements[id] });
   }
 }

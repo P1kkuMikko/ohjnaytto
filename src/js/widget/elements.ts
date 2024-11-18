@@ -1,3 +1,6 @@
+import headsIcon from "/images/coinflip/heads.png";
+import tailsIcon from "/images/coinflip/tails.png";
+
 export const widgetElements = {
   calc: `<div class="calc-input">
             <p name="user-input" class="userinput">0</p>
@@ -45,20 +48,20 @@ export const widgetElements = {
       <ul class="notes-list"></ul>`,
   coinflip: `<div class="stats">
             <div class="counter-container">
-                <img src="images/coinflip/heads.png" alt="Heads Icon">
+                <img src="${headsIcon}" alt="Heads Icon">
                 <p class="heads-count">Heads: 0</p>
             </div>
             <div class="counter-container">
-                <img src="images/coinflip/tails.png" alt="Tails Icon">
+                <img src="${tailsIcon}" alt="Tails Icon">
                 <p class="tails-count">Tails: 0</p>
             </div>
         </div>
         <div class="coin">
             <div class="heads">
-                <img src="images/coinflip/heads.png" alt="Heads">
+                <img src="${headsIcon}" alt="Heads">
             </div>
             <div class="tails">
-                <img src="images/coinflip/tails.png" alt="Tails">
+                <img src="${tailsIcon}" alt="Tails">
             </div>
         </div>
         <div class="buttons">

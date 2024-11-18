@@ -1,10 +1,10 @@
 import "../scss/styles.scss";
 import "gridstack/dist/src/gridstack.scss";
-import { GridHTMLElement, GridStack, GridStackEngine, GridStackNode } from "gridstack";
+import { GridStackNode } from "gridstack";
 import { initializeGrid } from "./gridstack";
 import { initializeSidePanel } from "./sidepanel";
 import { calc } from "../js/widget/calc/calc.js";
-import { loadLastCity, searchWeather } from "./widget/weather/weather.js";
+import { loadLastCity, searchWeather } from "./widget/weather/weather";
 import { DigiClock } from "./widget/digiclock/DigiClock.js";
 import { Notes } from "./widget/notes/notes.js";
 import { Timer } from "./widget/timer/timer.js";
