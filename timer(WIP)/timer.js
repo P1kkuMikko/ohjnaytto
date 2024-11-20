@@ -1,3 +1,4 @@
+// Event listener for DOMContentLoaded to initialize the timer functionality
 document.addEventListener('DOMContentLoaded', () => {
     const timerList = document.getElementById('timer-list');
     const setTimerButton = document.getElementById('set-timer');
@@ -7,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const timerTitleInput = document.getElementById('timer-title');
     let timers = [];
 
+    // Event listener for setting a new timer
     setTimerButton.addEventListener('click', () => {
         const hours = parseInt(timerHoursInput.value) || 0;
         const minutes = parseInt(timerMinutesInput.value) || 0;
@@ -29,6 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Event listener for handling timer actions (toggle, delete)
     timerList.addEventListener('click', (e) => {
         const target = e.target.closest('button, .toggle-timer');
         if (!target) return;
@@ -56,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // Function to render the list of timers
     function renderTimers() {
         timerList.innerHTML = timers.map((timer, index) => {
             let remainingTime;
@@ -81,10 +85,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }).join('');
     }
 
+    // Function to save timers to localStorage
     function saveTimers() {
         localStorage.setItem('timers', JSON.stringify(timers));
     }
 
+    // Function to load timers from localStorage
     function loadTimers() {
         const savedTimers = localStorage.getItem('timers');
         if (savedTimers) {
@@ -93,6 +99,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Function to check timers and show notification if any timer is up
     function checkTimers() {
         const now = new Date();
         timers.forEach((timer, index) => {
@@ -112,6 +119,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Function to show notification
     function showNotification(title, body) {
         if (Notification.permission === 'granted') {
             new Notification(title, { body });
@@ -124,6 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    // Load timers from localStorage and start checking timers every second
     loadTimers();
     setInterval(checkTimers, 1000);
 });

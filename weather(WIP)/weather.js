@@ -1,3 +1,4 @@
+// Function to get coordinates of a city using OpenStreetMap API
 async function getCoordinates(city) {
     const response = await fetch(`https://nominatim.openstreetmap.org/search?q=${encodeURIComponent(city)}&format=json&limit=1`);
     const data = await response.json();
@@ -13,6 +14,7 @@ async function getCoordinates(city) {
     }
 }
 
+// Function to get weather data using Open-Meteo API
 async function getWeather(lat, lon) {
     const response = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true&hourly=temperature_2m,relative_humidity_2m,wind_speed_10m`);
     const weatherData = await response.json();
@@ -24,6 +26,7 @@ async function getWeather(lat, lon) {
     };
 }
 
+// Function to get weather description and icon based on weather code
 function getWeatherDescription(code) {
     const weatherDescriptions = {
         0: { description: 'Selkeää', icon: 'images/selkeää.svg' },
@@ -50,6 +53,7 @@ function getWeatherDescription(code) {
     return weatherDescriptions[code] || { description: 'Tuntematon säätila', icon: 'images/tuntematon_säätila.svg' };
 }
 
+// Function to search weather for the input city and display the result
 async function searchWeather() {
     const cityInput = document.getElementById('cityInput').value;
     const weatherResult = document.getElementById('weatherResult');
@@ -81,6 +85,7 @@ async function searchWeather() {
     }
 }
 
+// Function to load the last searched city from localStorage and display its weather on page load
 window.onload = async () => {
     const lastCity = localStorage.getItem('lastCity');
     if (lastCity) {

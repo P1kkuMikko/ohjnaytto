@@ -1,3 +1,4 @@
+// List of timezones
 const timezones = [
     "Pacific/Midway", "Pacific/Honolulu", "America/Juneau", "America/Los_Angeles",
     "America/Tijuana", "America/Denver", "America/Phoenix", "America/Chihuahua",
@@ -31,6 +32,7 @@ const timezones = [
     "Asia/Kamchatka", "Pacific/Majuro", "Pacific/Auckland", "Pacific/Tongatapu"
 ];
 
+// Function to populate the timezone selector with available timezones
 function populateTimezoneSelector() {
     const timezoneSelector = document.getElementById('timezone-selector');
     const localTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
@@ -47,6 +49,7 @@ function populateTimezoneSelector() {
     });
 }
 
+// Function to update the clock display based on the selected timezone
 function updateClock() {
     const clockElement = document.getElementById('clock');
     const timezoneSelector = document.getElementById('timezone-selector');
@@ -64,17 +67,22 @@ function updateClock() {
     clockElement.textContent = timeString;
 }
 
+// Event listener for timezone selector change to update the clock
 document.getElementById('timezone-selector').addEventListener('change', updateClock);
 
+// Function to set the default timezone to the local timezone
 function setDefaultTimezone() {
     const timezoneSelector = document.getElementById('timezone-selector');
     const localTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
     timezoneSelector.value = localTimezone;
 }
 
+// Populate the timezone selector and set the default timezone
 populateTimezoneSelector();
 setDefaultTimezone();
 
+// Update the clock every second
 setInterval(updateClock, 1000);
 
+// Initial clock update
 updateClock();
